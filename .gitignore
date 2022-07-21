@@ -1,0 +1,12 @@
+# Ignore directories
+.ipynb_checkpoints*
+__pycache__*
+input*
+output*
+Archive*
+
+# File types
+*.csv
+
+# Specific Files
+TODO.md
