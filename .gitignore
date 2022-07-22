@@ -21,6 +21,7 @@ shapefiles/
 !ODBizSources.csv
 !variablemap.csv
 !1-PreProcessing/raw/*
+!1-PreProcessing/raw/compress_vancouver/BC_Vancouver_Business_Licences.zip
 
 
 # Specific Files
