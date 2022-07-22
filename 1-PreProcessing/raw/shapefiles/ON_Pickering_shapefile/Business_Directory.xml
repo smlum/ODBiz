@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?><metadata>
+    <idinfo>
+        <citation>
+            <citeinfo>
+                <origin/>
+                <pubdate>20201130</pubdate>
+                <title>Business Directory</title>
+                <geoform>vector digital data</geoform>
+                <onlink>https://maps.durham.ca/arcgis/rest/services/Open_Data/Durham_OpenData/MapServer/11</onlink>
+            </citeinfo>
+        </citation>
+        <descript>
+            <abstract>The Regional Municipality of Durham, Planning and Economic Development Department and its municipal partners conduct an annual count of businesses within the Region. Between May and September, the Region's Business Count team visit every business establishment in Durham to gather basic information about the type and nature of the business, the number of employees, floor space, etc. The success of this important survey depends upon the assistance and co-operating of the region's business community.</abstract>
+            <purpose>The purpose of this data is to spatially represent businesses within Durham Region Economic Development Business Directory. This data is available to the public as open data .</purpose>
+        </descript>
+        <timeperd>
+            <timeinfo>
+                <rngdates>
+                    <begdate>20170503</begdate>
+                    <enddate>20171207</enddate>
+                </rngdates>
+            </timeinfo>
+            <current>End date of temporal extent represents the last time the metadata for extent was reviewed. Data within this dataset is potentially updated more frequently.</current>
+        </timeperd>
+        <status>
+            <progress>In work</progress>
+            <update>Annually</update>
+        </status>
+        <spdom>
+            <bounding>
+                <westbc>-79.3076</westbc>
+                <eastbc>-78.4891</eastbc>
+                <northbc>44.4642</northbc>
+                <southbc>43.7979</southbc>
+            </bounding>
+        </spdom>
+        <keywords>
+            <theme>
+                <themekt>ISO 19115 Topic Categories</themekt>
+                <themekey>location</themekey>
+            </theme>
+            <theme>
+                <themekt>None</themekt>
+                <themekey>Durham</themekey>
+                <themekey>Businesses</themekey>
+                <themekey>DRES</themekey>
+                <themekey>Durham Region Employment Survey</themekey>
+                <themekey>Durham Business</themekey>
+            </theme>
+        </keywords>
+        <accconst>None</accconst>
+        <useconst>Open Data License</useconst>
+        <ptcontac>
+            <cntinfo>
+                <cntorgp>
+                    <cntorg>Region of Durham</cntorg>
+                </cntorgp>
+                <cntaddr>
+                    <addrtype>physical</addrtype>
+                    <address>605 Rossland Road East</address>
+                    <city>Whitby</city>
+                    <state>Durham Region</state>
+                    <postal>L1N 6A3</postal>
+                    <country>CA</country>
+                </cntaddr>
+                <cntvoice>905-668-7711</cntvoice>
+                <cntemail>opendata@durham.ca</cntemail>
+            </cntinfo>
+        </ptcontac>
+        <datacred>Data Mapping and Graphics, Durham Region Planning and Economic Development</datacred>
+    </idinfo>
+    <spdoinfo>
+        <direct>Vector</direct>
+    </spdoinfo>
+    <metainfo>
+        <metd>20170914</metd>
+        <metc>
+            <cntinfo>
+                <cntorgp>
+                    <cntorg>Region of Durham</cntorg>
+                </cntorgp>
+                <cntaddr>
+                    <addrtype>physical</addrtype>
+                    <address>605 Rossland Road East</address>
+                    <city>Whitby</city>
+                    <state>Durham Region</state>
+                    <postal>L1N 6A3</postal>
+                    <country>CA</country>
+                </cntaddr>
+                <cntvoice>905-668-7711</cntvoice>
+                <cntemail>opendata@durham.ca</cntemail>
+            </cntinfo>
+        </metc>
+        <metstdn>FGDC Content Standard for Digital Geospatial Metadata</metstdn>
+        <metstdv>FGDC-STD-001-1998</metstdv>
+        <mettc>local time</mettc>
+    </metainfo>
+</metadata>
