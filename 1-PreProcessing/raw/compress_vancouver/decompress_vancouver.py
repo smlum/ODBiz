@@ -3,9 +3,9 @@ import hashlib
 sha256 = hashlib.sha256()
 van_original_sha256_hash = '634bd8f6378968c610d7afa5bad7f80e17701d5d1ebc605be3e89849217a2392'
 
-wkdir = '/home/jovyan/NewServer/ODBiz/1-PreProcessing/raw/compress_vancouver/'
+wkdir = '/home/jovyan/ODBiz/1-PreProcessing/raw/'
 filename = 'BC_Vancouver_Business_Licences'
-input_file = f'{wkdir}{filename}.zip'
+input_file = f'{wkdir}compress_vancouver/{filename}.zip'
 output_dir = f'{wkdir}{filename}.csv'
 
 with open(input_file, mode = 'rb') as fp:
