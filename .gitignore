@@ -15,13 +15,18 @@ shapefiles/
 *.json
 *.zip 
 *.tar.gz
+*.dbf
 
 # Include files from excluded patterns
 !ODBizSources.csv
 !variablemap.csv
+!1-PreProcessing/raw/*
+!1-PreProcessing/raw/compress_vancouver/BC_Vancouver_Business_Licences.zip
+
 
 # Specific Files
 TODO.md
 3-Merging/postMergedDataViewing.ipynb
 3-Merging/mergingTest.ipynb
 2-OpenTabulate/mapping_summary.txt
+1-PreProcessing/raw/BC_Vancouver_Business_Licences.csv

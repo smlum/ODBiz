@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?><MD_Metadata xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:srv="http://www.isotc211.org/2005/srv" xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:xalan="http://xml.apache.org/xalan" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gml="http://www.opengis.net/gml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.isotc211.org/2005/gmd">
+    <characterSet>
+        <MD_CharacterSetCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_CharacterSetCode" codeListValue="utf8" codeSpace="ISOTC211/19115">utf8</MD_CharacterSetCode>
+    </characterSet>
+    <hierarchyLevel>
+        <MD_ScopeCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ScopeCode" codeListValue="dataset" codeSpace="ISOTC211/19115">dataset</MD_ScopeCode>
+    </hierarchyLevel>
+    <hierarchyLevelName>
+        <gco:CharacterString>dataset</gco:CharacterString>
+    </hierarchyLevelName>
+    <contact gco:nilReason="missing"/>
+    <dateStamp gco:nilReason="missing"/>
+    <metadataStandardName>
+        <gco:CharacterString>ISO 19139 Geographic Information - Metadata - Implementation Specification</gco:CharacterString>
+    </metadataStandardName>
+    <metadataStandardVersion>
+        <gco:CharacterString>2007</gco:CharacterString>
+    </metadataStandardVersion>
+    <identificationInfo>
+        <MD_DataIdentification>
+            <citation>
+                <CI_Citation>
+                    <title>
+                        <gco:CharacterString>Map</gco:CharacterString>
+                    </title>
+                    <date gco:nilReason="missing"/>
+                </CI_Citation>
+            </citation>
+            <abstract>
+                <gco:CharacterString>This dataset contains points representing grocery and specialty grocery stores within the Greater Moncton area.While the City of Moncton endeavors to create the most accurate data available, this data should not be used for site-specific evaluation, surveying, or engineering purposes.Data was collected by heads up digitizing, using orthophotography as a back drop.</gco:CharacterString>
+            </abstract>
+            <purpose>
+                <gco:CharacterString>The Grocery Stores data is for general reference only, is subject to change, and is not warranted for any particular use or purpose.</gco:CharacterString>
+            </purpose>
+            <credit>
+                <gco:CharacterString>City of Moncton</gco:CharacterString>
+            </credit>
+            <descriptiveKeywords>
+                <MD_Keywords>
+                    <keyword>
+                        <gco:CharacterString>moncton</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>community</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>business</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>grocery</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>grocery store</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>store</gco:CharacterString>
+                    </keyword>
+                </MD_Keywords>
+            </descriptiveKeywords>
+            <descriptiveKeywords>
+                <MD_Keywords>
+                    <keyword>
+                        <gco:CharacterString>moncton</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>community</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>business</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>grocery</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>grocery store</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>store</gco:CharacterString>
+                    </keyword>
+                </MD_Keywords>
+            </descriptiveKeywords>
+            <descriptiveKeywords>
+                <MD_Keywords>
+                    <keyword>
+                        <gco:CharacterString>moncton</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>community</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>business</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>grocery</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>grocery store</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>store</gco:CharacterString>
+                    </keyword>
+                </MD_Keywords>
+            </descriptiveKeywords>
+            <descriptiveKeywords>
+                <MD_Keywords>
+                    <keyword>
+                        <gco:CharacterString>moncton</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>community</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>business</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>grocery</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>grocery store</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>store</gco:CharacterString>
+                    </keyword>
+                </MD_Keywords>
+            </descriptiveKeywords>
+            <descriptiveKeywords>
+                <MD_Keywords>
+                    <keyword>
+                        <gco:CharacterString>moncton</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>community</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>business</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>grocery</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>grocery store</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>store</gco:CharacterString>
+                    </keyword>
+                </MD_Keywords>
+            </descriptiveKeywords>
+            <descriptiveKeywords>
+                <MD_Keywords>
+                    <keyword>
+                        <gco:CharacterString>moncton</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>community</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>business</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>grocery</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>grocery store</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>store</gco:CharacterString>
+                    </keyword>
+                </MD_Keywords>
+            </descriptiveKeywords>
+            <resourceConstraints>
+                <MD_Constraints>
+                    <useLimitation>
+                        <gco:CharacterString>Open Data Terms of Use</gco:CharacterString>
+                    </useLimitation>
+                </MD_Constraints>
+            </resourceConstraints>
+            <language gco:nilReason="missing"/>
+            <characterSet>
+                <MD_CharacterSetCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_CharacterSetCode" codeListValue="utf8" codeSpace="ISOTC211/19115">utf8</MD_CharacterSetCode>
+            </characterSet>
+        </MD_DataIdentification>
+    </identificationInfo>
+</MD_Metadata>

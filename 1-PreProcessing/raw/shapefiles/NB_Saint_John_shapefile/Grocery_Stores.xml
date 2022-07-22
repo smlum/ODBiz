@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><MD_Metadata xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:srv="http://www.isotc211.org/2005/srv" xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:xalan="http://xml.apache.org/xalan" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gml="http://www.opengis.net/gml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.isotc211.org/2005/gmd">
+    <characterSet>
+        <MD_CharacterSetCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_CharacterSetCode" codeListValue="utf8" codeSpace="ISOTC211/19115">utf8</MD_CharacterSetCode>
+    </characterSet>
+    <hierarchyLevel>
+        <MD_ScopeCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ScopeCode" codeListValue="dataset" codeSpace="ISOTC211/19115">dataset</MD_ScopeCode>
+    </hierarchyLevel>
+    <hierarchyLevelName>
+        <gco:CharacterString>dataset</gco:CharacterString>
+    </hierarchyLevelName>
+    <contact gco:nilReason="missing"/>
+    <dateStamp>
+        <gco:Date>2020-05-25</gco:Date>
+    </dateStamp>
+    <metadataStandardName>
+        <gco:CharacterString>ISO 19139 Geographic Information - Metadata - Implementation Specification</gco:CharacterString>
+    </metadataStandardName>
+    <metadataStandardVersion>
+        <gco:CharacterString>2007</gco:CharacterString>
+    </metadataStandardVersion>
+    <identificationInfo>
+        <MD_DataIdentification>
+            <citation>
+                <CI_Citation>
+                    <title>
+                        <gco:CharacterString>Grocery Stores</gco:CharacterString>
+                    </title>
+                    <date gco:nilReason="missing"/>
+                </CI_Citation>
+            </citation>
+            <abstract>
+                <gco:CharacterString>Point features representing the locations of grocery stores in Saint John.</gco:CharacterString>
+            </abstract>
+            <purpose>
+                <gco:CharacterString>Point features representing the locations of grocery stores in Saint John.</gco:CharacterString>
+            </purpose>
+            <credit>
+                <gco:CharacterString>The City of Saint John</gco:CharacterString>
+            </credit>
+            <descriptiveKeywords>
+                <MD_Keywords>
+                    <keyword>
+                        <gco:CharacterString>Grocery Stores</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>POI</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>development</gco:CharacterString>
+                    </keyword>
+                </MD_Keywords>
+            </descriptiveKeywords>
+            <descriptiveKeywords>
+                <MD_Keywords>
+                    <keyword>
+                        <gco:CharacterString>Grocery Stores</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>POI</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>development</gco:CharacterString>
+                    </keyword>
+                </MD_Keywords>
+            </descriptiveKeywords>
+            <descriptiveKeywords>
+                <MD_Keywords>
+                    <keyword>
+                        <gco:CharacterString>Grocery Stores</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>POI</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>development</gco:CharacterString>
+                    </keyword>
+                </MD_Keywords>
+            </descriptiveKeywords>
+            <resourceConstraints>
+                <MD_Constraints>
+                    <useLimitation>
+                        <gco:CharacterString>Open Government Licence – City of Saint John You are encouraged to use the Information that is available under this licence with only a few conditions. Using Information under this licence • Use of any Information indicates your acceptance of the terms below. • The Information Provider grants you a worldwide, royalty-free, perpetual, non-exclusive licence to use the Information, including for commercial purposes, subject to the terms below. You are free to: • Copy, modify, publish, translate, adapt, distribute or otherwise use the Information in any medium, mode or format for any lawful purpose. You must, where you do any of the above: • Acknowledge the source of the Information by including any attribution statement specified by the Information Provider(s) and, where possible, provide a link to this licence. • If the Information Provider does not provide a specific attribution statement, or if you are using Information from several information providers and multiple attributions are not practical for your product or application, you must use the following attribution statement: Contains information licensed under the Open Government Licence – City of Saint John The terms of this licence are important, and if you fail to comply with any of them, the rights granted to you under this licence, or any similar licence granted by the Information Provider, will end automatically. Exemptions This licence does not give you the right to use: • Personal information; • third part rights the Information Provider is not authorized to license; • the names, crests, logos, or other official symbols of the Information Provider; and • Information subject to other intellectual property rights, including patents, trade-marks and official marks. Non-endorsement This licence does not grant you nay right to use Information in a way that suggests any official status or that the Information Provider endorses you or your use of the Information. No Warranty The Information is licensed “as is”, and the Information Provider excludes all representations, warranties, obligations, and liabilities, whether expressed or implied, to the maximum extent permitted by law. The Information Provider is not liable for any errors or omissions in the Information, and will not under any circumstances be liable for any direct, indirect, special, incidental, consequential, or other loss, injury or damage caused by its use or otherwise arising in connection with this licence or the Information, even if specifically advised of the possibility of such loss, injury or damage. Governing Law This licence is governed by the laws of the Province of New Brunswick and the applicable laws of Canada. Legal proceeding related to this licence may only be brought in the courts of New Brunswick or the Federal Court of Canada.Definitions In this licence, the terms below have the following meanings: “Information” Means information resources protected by copyright or other information that is offered for use under the terms of this licence. “Information Provider” Means The City of Saint John “Personal Information” Means “personal information” as defined in section 1 of the Right to Information and Protection of Privacy Act, SNB, 2009, c. R-10.6 “You” Means the natural or legal person, or body of persons corporate or incorporate, acquiring rights under this licence. “Versioning” This is version 01.0 of the Open Government Licence – City of Saint John. The Information Provider may make changes to the terms of this licence from time to time and issue a new version of the licence. Your use of the Information will be governed by the terms of the licence in force as of the date you accessed the information. Version 01.0 dated: 2015-03-02</gco:CharacterString>
+                    </useLimitation>
+                </MD_Constraints>
+            </resourceConstraints>
+            <language gco:nilReason="missing"/>
+            <characterSet>
+                <MD_CharacterSetCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_CharacterSetCode" codeListValue="utf8" codeSpace="ISOTC211/19115">utf8</MD_CharacterSetCode>
+            </characterSet>
+        </MD_DataIdentification>
+    </identificationInfo>
+</MD_Metadata>
