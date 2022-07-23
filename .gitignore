@@ -15,7 +15,7 @@ shapefiles/
 *.json
 *.zip 
 *.tar.gz
-*.dbf
+# *.dbf
 
 # Include files from excluded patterns
 !ODBizSources.csv
