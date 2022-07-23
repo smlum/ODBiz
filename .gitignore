@@ -22,7 +22,7 @@ shapefiles/
 !variablemap.csv
 !1-PreProcessing/raw/*
 !1-PreProcessing/raw/compress_vancouver/BC_Vancouver_Business_Licences.zip
-
+!1-PreProcessing/raw/shapefiles/**/**.csv
 
 # Specific Files
 TODO.md

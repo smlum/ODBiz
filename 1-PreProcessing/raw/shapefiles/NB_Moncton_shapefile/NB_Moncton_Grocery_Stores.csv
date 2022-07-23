@@ -1,0 +1,48 @@
+﻿X,Y,OBJECTID,Name,Address,Category,Jurisdiction,Comment
+2631962.4634,7451334.3888,1,Sobey's,1160 FINDLAY BLVD,Primary,Riverview,General Groceries
+2631417.5119,7453102.8911,2,Superstore,429 COVERDALE RD,Primary,Riverview,General Groceries
+2628882.2923,7458944.5161,3,Superstore,89 TRINITY DR,Primary,Moncton,General Groceries
+2632412.3727,7455251.1612,4,Sobey's,55 VAUGHAN HARVEY BLVD,Primary,Moncton,General Groceries
+2633874.7048,7456316.2965,5,Superstore,165 MAIN ST,Primary,Moncton,General Groceries
+2634309.0312,7456487.358,6,Sobey's ,477 PAUL ST,Primary,Dieppe,General Groceries
+2634654.7939,7456842.8263,7,Sobey's,501 REGIS ST,Primary,Dieppe,General Groceries
+2633846.8011,7459532.496,8,Sobey's,77 FILLES DE JESUS AVE,Primary,Moncton,General Groceries
+2628907.4592,7457921.5607,9,Sobey's,1380 MOUNTAIN RD,Primary,Moncton,General Groceries
+2639122.8734,7456708.4742,10,IGA,615 DIEPPE BLVD,Primary,Dieppe,General Groceries
+2633012.0194,7460226.1475,11,Costco,140 GRANITE DR,Primary,Moncton,General Groceries
+2629126.4803,7458511.6647,12,Wal-Mart,25 PLAZA BLVD,Primary,Moncton,General Groceries
+2634469.1478,7456689.1095,13,Wal-Mart,477 PAUL ST,Primary,Dieppe,General Groceries
+2633882.7035,7456379.6957,14,Giant Tiger,165 MAIN ST,Secondary,Moncton,Limited Groceries
+2629517.2636,7457840.9768,15,Giant Tiger,80 MAPLETON RD,Secondary,Moncton,Limited Groceries
+2630175.7009,7452384.3982,16,Giant Tiger,720 COVERDALE RD,Secondary,Riverview,Limited Groceries
+2628374.3689,7458794.6824,17,Shoppers Drug Mart,1633 MOUNTAIN RD,Secondary,Moncton,Limited Groceries
+2631200.9995,7456905.6467,18,Shoppers Drug Mart,681 MOUNTAIN RD,Secondary,Moncton,Limited Groceries
+2632353.0993,7455020.3993,19,Shoppers Drug Mart,45 VAUGHAN HARVEY BLVD,Secondary,Moncton,Limited Groceries
+2634648.211,7456209.2412,20,Shoppers Drug Mart,18 CHAMPLAIN ST,Secondary,Dieppe,Limited Groceries
+2633373.0247,7458462.1573,21,Shoppers Drug Mart,320 ELMWOOD DR,Secondary,Moncton,Limited Groceries
+2631031.5799,7452794.2459,22,Shoppers Drug Mart,500 COVERDALE RD,Secondary,Riverview,Limited Groceries
+2630841.7091,7456906.7543,23,Rinzlers Meat Market,808 MOUNTAIN RD,Primary,Moncton,General Groceries
+2632714.7612,7455999.2078,25,Dolma,251 ST GEORGE ST,Secondary,Moncton,Limited Groceries
+2639715.3569,7456561.3397,26,Dolma,140 CANAAN DR,Secondary,Dieppe,Limited Groceries
+2629937.7469,7457443.7367,27,Tomavo,1063 MOUNTAIN RD,Specialty,Moncton,Limited Groceries
+2631739.4022,7455581.3704,28,Wholesale Club,520 ST GEORGE BLVD,Primary,Moncton,Limited Groceries
+2627563.7462,7459381.59,29,Old Fashion Meat Market,1855 MOUNTAIN RD,Specialty,Moncton,Limited Groceries
+2630264.4622,7452656.2695,33,Old Time Meat Market,711 COVERDALE RD,Specialty,Riverview,Limited Groceries
+2631779.8976,7456706.6285,34,Afrikana (products from Central Africa),7 Jones St,Specialty,Moncton,Limited groceries
+2634778.4983,7456487.6748,35,Blue Olive Grocery Store (Middle Eastern),451 Paul St,Specialty,Dieppe,Limited groceries
+2634955.1712,7456415.6219,36,Spice Shop (Asian/Filipino),75 Champlain St,Specialty,Dieppe,Limited groceries
+2632721.0342,7455995.0033,37,Dolma Foods (international),249 St George St,Specialty,Moncton,Limited groceries
+2633524.8499,7458635.8527,38,Baobab (African goods store),331 Elmwood Dr,Specialty,Moncton,Limited groceries
+2631866.7533,7453344.6132,39,Near East Chinese Market,342 Coverdale Rd,Specialty,Riverview,Limited groceries
+2635603.9425,7456391.9018,40,Dieppe Market,232 Gauvin Rd,Specialty,Dieppe,Limited groceries
+2633130.1335,7455573.7184,41,Moncton Market,120 Westmorland St,Specialty,Moncton,Limited groceries
+2639696.929,7456582.933,42,Dolma Food (Dieppe),140 Canaan Dr,Specialty,Dieppe,Limited groceries
+2632090.8229,7455195.8998,43,Oriental Market,1383 Main St,Specialty,Moncton ,Limited groceries
+2630898.3646,7456949.9299,44,Kim's Mart,797 Mountain Rd,Specialty,Moncton,Limited groceries
+2633366.7003,7456389.6759,45,Nguyen Asian Convenience Store,55 Belleview Ave,Specialty,Moncton,Limited groceries
+2631678.2805,7455578.5217,46,L.A. Groceries,526 St. George Blvd,Specialty,"Moncton
+",Limited groceries
+2632244.6062,7455794.9869,47,Rabih Store,390 St. George St.,Specialty,Moncton,Limited groceries
+2629431.5092,7457792.5877,48,Taste of Homeland,1201 Mountain Rd,Specialty,Moncton,Limited groceries
+2634071.0269,7457271.2242,49,B's Kilimanjaro - African Groceries,247 Lewisville Rd,Specialty,Moncton,Limited groceries
+2632156.8579,7455769.4193,50,Walkem Int'l Food Market,148 High St,Specialty,Moncton,Limited groceries
