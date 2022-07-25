@@ -33,17 +33,17 @@ def main():
     ET = 'Canada/Eastern'
     start_time = dt.now(timezone(ET))
     today = str(start_time)[:10]
-    inputFileDate = '2022-07-04'
+    inputFileDate = today
+    # inputFileDate = '2022-07-04'
 
     # File path names
-    inputFileName = f"/home/jovyan/ODBiz/3-Merging/output/3-ODBiz_merged_{inputFileDate}.csv"
-    inputFileName = f"/home/jovyan/ODBiz/3-Merging/output/ODBiz_merged_{inputFileDate}.csv"
-    outputFileName = f"/home/jovyan/ODBiz/3-Merging/output/4-ODBiz_merged_{today}.csv"
+    inputFileName = f"/home/jovyan/ODBiz/3-Merging/output/2-ODBiz_merged_{inputFileDate}.csv"
+    outputFileName = f"/home/jovyan/ODBiz/3-Merging/output/3-ODBiz_merged_{today}.csv"
 
     # Load in the csv
-    total_lines = 1302310
+    total_lines = 802564 
     chunksize = 100000
-    df = pd.concat([chunk for chunk in tqdm(pd.read_csv(inputFileName, chunksize=chunksize, dtype = str), desc='Loading data', total=total_lines//chunksize)])
+    df = pd.concat([chunk for chunk in tqdm(pd.read_csv(inputFileName, chunksize=chunksize, dtype = str), desc='Loading data', total=total_lines//chunksize+1)])
     print('Filling in NA as empty string')
     old_time = dt.now(timezone(ET))
     df = df.fillna('')

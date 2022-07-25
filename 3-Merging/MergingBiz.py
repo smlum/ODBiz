@@ -51,7 +51,7 @@ def main():
 
     # File path names
     pdir="/home/jovyan/ODBiz/3-Merging/input"
-    outName = f"/home/jovyan/ODBiz/3-Merging/output/2-ODBiz_merged_{today}"
+    outName = f"/home/jovyan/ODBiz/3-Merging/output/1-ODBiz_merged_{today}"
     dups_only_path = f"/home/jovyan/ODBiz/3-Merging/output/ODBiz_dups_only_{today}"
 
     # Duplicate keys
