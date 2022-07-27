@@ -43,6 +43,10 @@ def GetHash(x):
     return h.hexdigest()
 
 def main():
+    print('----------------------------------------------------------------------------------------------------------------------------')
+    # Toggle a "double checking" mode
+    double_check_mode = True
+
     # Retrieve today's date
     # today = dt.date.today()
     ET = 'Canada/Eastern'
@@ -52,7 +56,13 @@ def main():
     # File path names
     pdir="/home/jovyan/ODBiz/3-Merging/input"
     outName = f"/home/jovyan/ODBiz/3-Merging/output/1-ODBiz_merged_{today}"
-    dups_only_path = f"/home/jovyan/ODBiz/3-Merging/output/ODBiz_dups_only_{today}"
+    csv_rows_path = f'/home/jovyan/ODBiz/3-Merging/double_check/csv_rows'
+    std_prov_path = f'/home/jovyan/ODBiz/3-Merging/double_check/standardized_province_names.csv'
+    dups_only_path = f"/home/jovyan/ODBiz/3-Merging/output/ODBiz_dups_only_{today}.csv"
+
+    if double_check_mode:
+        csv_rows_cols = ['localfile', 'num_rows']
+        csv_rows_df = pd.DataFrame(columns = csv_rows_cols)
 
     # Duplicate keys
     # Use these columns to determine obvious duplicates and 
@@ -74,14 +84,31 @@ def main():
     # Begin merging csvs
     DFS=[]
     files=[f for f in listdir(pdir) if f.endswith('.csv')]
-    print('Begin merging files together...')
-    for f in tqdm(files):
+    for f in tqdm(files, desc='Merging files'):
         if f in excluded_files:
             continue
         df_temp=pd.read_csv(f'{pdir}/{f}',dtype=str, low_memory=False)
         DFS.append(df_temp)
 
+        # Count the number of rows in each csv
+        if double_check_mode:
+            num_rows = df_temp.shape[0]
+            new_row = pd.DataFrame(data = {'localfile': [f], 'num_rows': [num_rows]})
+            csv_rows_df = pd.concat([csv_rows_df,new_row])
+
+    if double_check_mode:
+        new_row = pd.DataFrame(data = {'localfile': ['Total'], 'num_rows': [csv_rows_df['num_rows'].sum()]})
+        csv_rows_df = pd.concat([csv_rows_df,new_row])
+        csv_rows_df.to_csv(f'{csv_rows_path}.csv', index = False)
+        print(f'File saved to {csv_rows_path}.csv')
+        csv_rows_df = csv_rows_df.sort_values('num_rows', ascending = False)
+        csv_rows_df.to_csv(f'{csv_rows_path}_sorted.csv', index = False)
+        print(f'File saved to {csv_rows_path}_sorted.csv')
+
+
     # Reorder the columns
+    print('Reordering columns...')
+    old_time = dt.now()
     df_unordered=pd.concat(DFS, ignore_index = True)
     del DFS
     col_order = [ 'idx',
@@ -128,109 +155,133 @@ def main():
             'provider'
             ]
     df=df_unordered[col_order]
+    new_time = dt.now()
+    exetime = new_time - old_time
+    print(f'Done in {exetime.seconds} s')
 
-    #standardise province names
-    df.loc[df.provider=='Province of Alberta','province']='AB'
-    df.loc[df.provider=='Province of British Columbia','province']='BC'
-    df.loc[df.provider=='Province of Ontario','province']='ON'
-    df.loc[df.provider=='Province of Québec','province']='QC'
-    df.loc[df.provider=='Province of Saskatchewan','province']='SK'
-    df.loc[df.provider=='Province of Nova Scotia','province']='NS'
-    df.loc[df.provider=='Province of Prince Edward Island','province']='PE'
-
-    provs_dict={'Alberta':'AB',
-               'British Columbia':'BC',
-               '`': 'BC', # 1 business keeps setting their province to ` and I have determined that they’re located in BC
-               'Manitoba':'MB',
-               'New Brunswick':'NB',
-               'Newfoundland and Labrador':'NL',
-               'Newfoundland And Labrador':'NL',
-               'NF':'NL',
-               'Nova Scotia':'NS',
-               'Northwest Territories':'NT',
-               'Nunavut':'NU',
-               'Ontario':'ON',
-               'ONTARIO':'ON',
-               'Prince Edward Island':'PE',
-               'Quebec':'QC',
-               'QB':'QC',
-               'PQ':'QC',
-               'Saskatchewan':'SK',
-               'Yukon Territories':'YT',
-               'Yukon':'YT'}
+    # Standardize province names
     print('Standardizing Province Names...')
-    for key in tqdm(provs_dict):
-        df['province'] = df['province'].str.replace(key, provs_dict[key],regex=False)
+
+    provs_dict={
+                'Province of Alberta': 'AB',
+                'Province of British Columbia': 'BC',
+                'Province of Ontario': 'ON',
+                'Province of Québec': 'QC',
+                'Province of Saskatchewan': 'SK',
+                'Province of Nova Scotia': 'NS',
+                'Province of Prince Edward Island': 'PE',
+                'Alberta':'AB',
+                'British Columbia':'BC',
+                '`': 'BC', # 1 business keeps setting their province to ` and I have determined that they’re located in BC
+                'Manitoba':'MB',
+                'New Brunswick':'NB',
+                'Newfoundland and Labrador':'NL',
+                'Newfoundland And Labrador':'NL',
+                'NF':'NL',
+                'Nova Scotia':'NS',
+                'Northwest Territories':'NT',
+                'Nunavut':'NU',
+                'Ontario':'ON',
+                'ONTARIO':'ON',
+                'Prince Edward Island':'PE',
+                'Quebec':'QC',
+                'QB':'QC',
+                'PQ':'QC',
+                'Saskatchewan':'SK',
+                'Yukon Territories':'YT',
+                'Yukon':'YT'}
+
+    df['province'] = df['province'].replace(provs_dict)
     df['province'] = df['province'].str.upper()
+    if double_check_mode:
+        std_prov_df = pd.DataFrame({'post_standarization_count': df['province'].value_counts()})
+        std_prov_df.index.name = 'prov_code'
+        std_prov_df.to_csv(std_prov_path)
+        print(f'File saved to {std_prov_path}')
+    old_time = new_time
+    new_time = dt.now()
+    exetime = new_time - old_time
+    print(f'Done in {exetime.seconds} s')
 
     # Standardize Country Names
+    print('Standardizing Country Names...')
     country_dict = {
         '^CA$': 'CANADA'
     }
-    print('Standardizing Country Names...')
-    for key in tqdm(country_dict):
+    for key in (country_dict):
         df['country'] = df['country'].str.replace(key, country_dict[key], regex = True)
     df['country'] = df['country'].str.upper()
+    old_time = new_time
+    new_time = dt.now()
+    exetime = new_time - old_time
+    print(f'Done in {exetime.seconds} s')
 
     #make postal codes consistent
     print('Making Postal Codes consistent...')
-    df['postal_code']=tqdm(df['postal_code'].str.replace(' ','').str.upper())
+    df['postal_code']=(df['postal_code'].str.replace(' ','').str.upper())
+    old_time = new_time
+    new_time = dt.now()
+    exetime = new_time - old_time
+    print(f'Done in {exetime.seconds} s')
 
-    # #excel turns grade ranges with hyphens to dates, so replace with double hyphens
+    # #excel turns ranges with hyphens to dates, so replace with double hyphens
+    print('Fixing hyphens...')
     df['unit']=df['unit'].str.replace('-','--')
     df['unit']=df['unit'].str.replace('---','--')
     df['total_no_employees']=df['total_no_employees'].str.replace('-','--')
     df['total_no_employees']=df['total_no_employees'].str.replace('---','--')
-
-    # #Drop entries that shouldn't be included
-    # drop_list=['Home-based School', 'Home Based School', 'StrongStart BC']
-
-    # for d in drop_list:
-    #     df.drop(df.loc[df['facility_name']==d].index, inplace=True)
+    old_time = new_time
+    new_time = dt.now()
+    exetime = new_time - old_time
+    print(f'Done in {exetime.seconds} s')
 
     # Mark duplicates
-    print('Marking Duplicates')
+    print('Marking Duplicates...')
     df['duplicated'] = df.duplicated(subset=dup_keys, keep='first')
     dup_count = df['duplicated'].sum()
+    old_time = new_time
+    new_time = dt.now()
+    exetime = new_time - old_time
+    print(f'Done in {exetime.seconds} s')
 
     #finally, replace index with fresh index
-    print('Creating idx_basic...')
-    df['idx_basic']=tqdm(range(1,1+len(df)))
+    df['idx_basic']=range(1,1+len(df))
 
     def make_temp_col(df):
+        print('Creating temp column:')
         df_temp=df.copy()
         cols=dup_keys
-        del_list=[" ","-","'","."]
-        print('Capitalize values and fill in blanks of dup_key columns with NULL to a copy of the df')
-        for col in tqdm(cols):
+        # del_list=[" ","-","'","."]
+        del_list = "[\s\-'\.]" # Regex equivalent of above (this is faster)
         
-            df_temp[col]=df_temp[col].str.upper()
-            df_temp[col]=df_temp[col].fillna('NULL')
+        for col in tqdm(cols, desc='Capitalize values and remove punctuation characters'):
+            df_temp[col]=df_temp[col].str.upper() # ~ 1.5s
+            df_temp[col]=df_temp[col].str.replace(del_list,'',regex=True) # ~ 2s
         
-            for i in del_list:
-                df_temp[col]=df_temp[col].str.replace(i,'',regex=False)
+        print('Fill blanks with NULL...')
+        old_time = dt.now()
+        df_temp[cols]=df_temp[cols].fillna('NULL') # ~ 5s
+        new_time = dt.now()
+        exetime = new_time - old_time
+        print(f'Done in {exetime.seconds} s')
 
         df_temp['temp'] = ''
-        print('Appending dup_key columns together and assign to temp column')
-        for col in tqdm(cols):
+        for col in tqdm(cols, desc='Appending dup_key columns together and assign to temp column'):
             df_temp['temp'] += df_temp[col] 
             if col != cols[-1]:
                 df_temp['temp'] += '-'
         
         return df_temp['temp']
 
-    print('Creating temp column:')
     df['temp']=make_temp_col(df)
     print('Applying hashing to get new indicies...')
-    df['idx']=tqdm(df['temp'].apply(GetHash))
+    df['idx']=(df['temp'].apply(GetHash))
 
     # Fill in geo_source.
     print('Filling in geo_source column')
     if ~('geo_source' in df.columns):
         df['geo_source'] = ''
     df.loc[~df.latitude.isnull() & ((df.geo_source.isnull()) | (df.geo_source == '')), 'geo_source']='Source'
-
-    # Insert filter for removing businesses with no address or coord info here
 
     # Remove temporary columns
     df = df.drop(   labels = [  'duplicated',
@@ -246,12 +297,16 @@ def main():
 
     # Write dataframe to csv
     print(f'Writing {len(df)} dataframe entries to csv. This will take a while and unfortunately no easy progress bar solutions were available here...')
-    df_dups_only.to_csv(f'{dups_only_path}.csv',index=False)
-    print(f'File saved to {dups_only_path}.csv')
+    old_time = dt.now()
+    df_dups_only.to_csv(f'{dups_only_path}',index=False)
+    print(f'Duplicates only csv saved to {dups_only_path}')
     df.to_csv(f'{outName}.csv',index=False)
     print(f'File saved to {outName}.csv')
+    new_time = dt.now()
+    exetime = new_time - old_time
+    print(f'csv took {exetime.seconds} s to save')
     end_time = dt.now(timezone(ET)) - start_time
-    print(f'Finished in {end_time.total_seconds()} seconds')
+    print(f'Execution finished in {end_time.total_seconds()} seconds')
 
 if __name__ == '__main__':
     main()
