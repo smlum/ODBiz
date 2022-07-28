@@ -5,6 +5,8 @@ from pytz import timezone
 from datetime import datetime as dt
 
 def main():    
+    double_check_mode = True 
+
     # Retrieve today's date
     ET = 'Canada/Eastern'
     start_time = dt.now(timezone(ET))
@@ -15,7 +17,8 @@ def main():
     # File path names
     inputFileName = f"/home/jovyan/ODBiz/3-Merging/output/1-ODBiz_merged_{inputFileDate}.csv"
     outputFileName = f"/home/jovyan/ODBiz/3-Merging/output/2-ODBiz_merged_{today}.csv"
-    inv_coords_csv = f'/home/jovyan/ODBiz/3-Merging/output/invalid_coords_affected_rows_{today}.csv'
+    inv_coords_csv = f'/home/jovyan/ODBiz/3-Merging/double_check/invalid_coords_affected_rows.csv'
+    coord_ranges_csv = f'/home/jovyan/ODBiz/3-Merging/double_check/coord_ranges.csv'
 
     # Load in the csv
     total_lines = 802564 
@@ -26,6 +29,15 @@ def main():
     df[["latitude", "longitude"]] = df[["latitude", "longitude"]].apply(pd.to_numeric, errors = 'coerce')
     df['valid_coord'] = False
     # df_copy = df.copy() # For debugging
+
+    if double_check_mode:
+        coord_ranges_df = pd.DataFrame(columns = ['coord', 'min', 'max'])
+        new_rows = pd.DataFrame({   'coord': ['original latitude', 'original longitude'], 
+                                    'min': [df['latitude'].min(), df['longitude'].min()], 
+                                    'max': [df['latitude'].max(), df['longitude'].max()]
+                    })
+        coord_ranges_df = pd.concat([coord_ranges_df, new_rows])
+        print('')
 
     # Fix invalid longitudes
     print('Fixing invalid coordinates and marking valid ones')
@@ -61,6 +73,22 @@ def main():
     new_time = dt.now(timezone(ET))
     exetime = new_time - old_time
     print(f'Done in {exetime.seconds} s')
+
+    if double_check_mode:
+        new_rows = pd.DataFrame({   'coord': ['new latitude', 'new longitude'], 
+                            'min': [df['latitude'].min(), df['longitude'].min()], 
+                            'max': [df['latitude'].max(), df['longitude'].max()]
+                            })
+        coord_ranges_df = pd.concat([coord_ranges_df, new_rows])
+
+        new_rows = pd.DataFrame({   'coord': ['expected latitude', 'expected longitude'], 
+                            'min': [40 , -141], 
+                            'max': [84 , -50]
+                            })
+        coord_ranges_df = pd.concat([coord_ranges_df, new_rows])
+
+        coord_ranges_df.to_csv(coord_ranges_csv, index = False)
+        print(f'File saved to {coord_ranges_csv}')
 
     # Save df to csv
     df.to_csv(outputFileName, index = export_idx)

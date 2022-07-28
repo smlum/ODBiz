@@ -58,7 +58,7 @@ def main():
     outName = f"/home/jovyan/ODBiz/3-Merging/output/1-ODBiz_merged_{today}"
     csv_rows_path = f'/home/jovyan/ODBiz/3-Merging/double_check/csv_rows'
     std_prov_path = f'/home/jovyan/ODBiz/3-Merging/double_check/standardized_province_names.csv'
-    dups_only_path = f"/home/jovyan/ODBiz/3-Merging/output/ODBiz_dups_only_{today}.csv"
+    dups_only_path = f"/home/jovyan/ODBiz/3-Merging/double_check/ODBiz_dups_only.csv"
 
     if double_check_mode:
         csv_rows_cols = ['localfile', 'num_rows']
@@ -252,7 +252,7 @@ def main():
         df_temp=df.copy()
         cols=dup_keys
         # del_list=[" ","-","'","."]
-        del_list = "[\s\-'\.]" # Regex equivalent of above (this is faster)
+        del_list = r"[\s\-'\.]" # Regex equivalent of above (this is faster)
         
         for col in tqdm(cols, desc='Capitalize values and remove punctuation characters'):
             df_temp[col]=df_temp[col].str.upper() # ~ 1.5s
@@ -291,9 +291,13 @@ def main():
 
     # Drop duplicates
     print('Dropping duplicates')
+    old_time = dt.now()
     df_dups_only = df[df.duplicated(subset=dup_keys, keep=False)]
     df = df.drop_duplicates(dup_keys)
     print(f'{dup_count} duplicate rows dropped')
+    new_time = dt.now()
+    exetime = new_time - old_time
+    print(f'Done in {exetime.seconds} s')
 
     # Write dataframe to csv
     print(f'Writing {len(df)} dataframe entries to csv. This will take a while and unfortunately no easy progress bar solutions were available here...')

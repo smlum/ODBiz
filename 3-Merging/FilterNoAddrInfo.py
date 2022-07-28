@@ -4,30 +4,6 @@ from tqdm import tqdm
 from pytz import timezone
 from datetime import datetime as dt
 
-def check_addr_info(row):
-    '''FIGURE OUT HOW TO IMPLEMENT THIS FUNCTION TO BE USED WITH APPLY!
-    '''
-    # df_lon = df['longitude']
-    addr_keys = ['full_address',
-                    'full_address_2',
-                    'mailing_address',
-                    'unit',
-                    'street_no',
-                    'street_name',
-                    'street_direction',
-                    'street_type',
-                    'city',
-                    'postal_code']
-    if row['latitude'] == '':
-        addr_info = row.loc[addr_keys]
-        addr_info = addr_info.values
-        addr_info = ''.join(addr_info)
-        if addr_info == '':
-            # Mark this business for removal!
-            return False
-    return True
-
-
 def main():
     # Retrieve today's date
     ET = 'Canada/Eastern'
@@ -39,6 +15,7 @@ def main():
     # File path names
     inputFileName = f"/home/jovyan/ODBiz/3-Merging/output/2-ODBiz_merged_{inputFileDate}.csv"
     outputFileName = f"/home/jovyan/ODBiz/3-Merging/output/3-ODBiz_merged_{today}.csv"
+    df_no_info_path = f'/home/jovyan/ODBiz/3-Merging/double_check/no_addr_info.csv'
 
     # Load in the csv
     total_lines = 802564 
@@ -80,6 +57,10 @@ def main():
     
     # Drop entries with insufficient address info
     print('Dropping entries with insufficient address info')
+    df_no_info = df[df['has_addr_info'] == False]
+    df_no_info.to_csv(df_no_info_path, index = False)
+    print(f'Saving df_no_info to {df_no_info_path}')
+
     df = df[df['has_addr_info'] == True]
     old_time = new_time
     new_time = dt.now(timezone(ET))
