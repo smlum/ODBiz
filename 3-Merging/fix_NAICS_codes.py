@@ -20,12 +20,6 @@ def main():
     chunksize = 100000
     df = pd.concat([chunk for chunk in tqdm(pd.read_csv(inputFileName, chunksize=chunksize, dtype = str), desc='Loading data', total=total_lines//chunksize+1)])
     print(f'Loaded in        {df.shape[0]} rows')
-    # print('Filling in NA as empty string')
-    # old_time = dt.now(timezone(ET))
-    # df = df.fillna('')
-    # new_time = dt.now(timezone(ET))
-    # exetime = new_time - old_time
-    # print(f'Done in {exetime.seconds} s')
 
     # Remove invalid NAICS values
     df['primary_NAICS'] = df['primary_NAICS'].str.replace('.0', '', regex = False)
@@ -40,10 +34,12 @@ def main():
     df['invalid_NAICS_query'] = (df['primary_NAICS'] % 10 == 0) & (df['primary_NAICS'] // 100000 == 0)
     df.loc[df['invalid_NAICS_query'] == True, 'primary_NAICS'] = df.loc[df['invalid_NAICS_query'] == True, 'primary_NAICS']//10
 
+    # Save df to file
     df.to_csv(outputFileName, index = False)
     print(f'Resulting df has {df.shape[0]} rows')
     print(f'File saved to {outputFileName}')
 
+    # Display execution time
     end_time = dt.now(timezone(ET))
     exetime = end_time - start_time
     print(f'Execution finished in {exetime.seconds} s')
