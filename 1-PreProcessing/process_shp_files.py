@@ -165,6 +165,10 @@ def main():
         # if 'testing' in root: # Ignore the files used for testing
         #     continue
 
+        # Skip the archive directory
+        if 'archive' in dirs:
+            dirs.remove('archive')
+
         # Iterate through all files in a folder
         for file in files:
             # Only process the .shp file
