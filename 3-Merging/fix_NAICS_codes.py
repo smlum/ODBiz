@@ -1,3 +1,10 @@
+'''
+fix_NAICS_codes.py
+
+Removes trailing zeros for all primary NAICS code values with strictly less than 6 digits
+This is because those NAICS codes would cause NAICS queries to return empty
+'''
+
 import pandas as pd 
 import numpy as np
 from tqdm import tqdm

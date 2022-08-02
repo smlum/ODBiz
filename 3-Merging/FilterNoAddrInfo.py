@@ -1,3 +1,9 @@
+'''
+FilterNoAddrInfo.py
+
+Filters out entries with insufficient address info for geocoding
+'''
+
 import pandas as pd
 import numpy as np
 from tqdm import tqdm
