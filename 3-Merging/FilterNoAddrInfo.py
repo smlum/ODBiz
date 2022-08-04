@@ -73,6 +73,9 @@ def main():
     exetime = new_time - old_time
     print(f'Done in {exetime.seconds} s')
 
+    # Drop the temp columns
+    df = df.drop(['addr_info', 'has_addr_info'], axis = 'columns')
+
     # Save the df to csv
     print(f'Saving df to {outputFileName}')
     df.to_csv(outputFileName, index = False)

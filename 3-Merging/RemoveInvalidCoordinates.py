@@ -97,6 +97,9 @@ def main():
         coord_ranges_df.to_csv(coord_ranges_csv, index = False)
         print(f'File saved to {coord_ranges_csv}')
 
+    # Drop the valid_coord column
+    df = df.drop('valid_coord', axis = 'columns')
+
     # Save df to csv
     df.to_csv(outputFileName, index = export_idx)
     print(f'df saved to {outputFileName}')

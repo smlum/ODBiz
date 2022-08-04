@@ -41,6 +41,9 @@ def main():
     df['invalid_NAICS_query'] = (df['primary_NAICS'] % 10 == 0) & (df['primary_NAICS'] // 100000 == 0)
     df.loc[df['invalid_NAICS_query'] == True, 'primary_NAICS'] = df.loc[df['invalid_NAICS_query'] == True, 'primary_NAICS']//10
 
+    # Drop the temp columns
+    df = df.drop('invalid_NAICS_query', axis = 'columns')
+
     # Save df to file
     df.to_csv(outputFileName, index = False)
     print(f'Resulting df has {df.shape[0]} rows')
