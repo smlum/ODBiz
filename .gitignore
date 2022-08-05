@@ -16,7 +16,6 @@ double_check/
 *.json
 *.zip 
 *.tar.gz
-# *.dbf
 
 # Include files from excluded patterns
 !ODBizSources.csv
