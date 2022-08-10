@@ -55,22 +55,23 @@ def format_parser(add):
 
 if __name__ == "__main__":
     start_time = dt.now()
-    # parser = ArgumentParser(
-    #     description='Apply libpostal address parser to an address column in a csv')
-    # parser.add_argument('name_in',
-    #                     help='Name/Path of input file')
-    # parser.add_argument('addr_col',
-    #                     help='Name of address column to pass to parser')
-    # parser.add_argument('name_out',
-    #                     help='Name/Path of output file')
-    # args = parser.parse_args()
+    parser = ArgumentParser(
+        description='Apply libpostal address parser to an address column in a csv')
+    parser.add_argument('name_in',
+                        help='Name/Path of input file')
+    parser.add_argument('addr_col',
+                        help='Name of address column to pass to parser')
+    parser.add_argument('name_out',
+                        help='Name/Path of output file')
+    args = parser.parse_args()
 
-    # name_in = args.name_in
-    # addr_col = args.addr_col
-    # name_out = args.name_out
-    name_in = '/home/jovyan/ODBiz/4-Parsing/input/ODBiz_Merged.csv' 
-    addr_col = 'full_address' 
-    name_out = '/home/jovyan/ODBiz/4-Parsing/output/parsed_biz.csv'
+    name_in = args.name_in
+    addr_col = args.addr_col
+    name_out = args.name_out
+
+    # name_in = '/home/jovyan/ODBiz/4-Parsing/input/ODBiz_Merged.csv' 
+    # addr_col = 'full_address' 
+    # name_out = '/home/jovyan/ODBiz/4-Parsing/output/parsed_biz.csv'
     
     df_in = pd.read_csv(name_in, dtype='str', low_memory=False)
     df_in=df_in.fillna('')
