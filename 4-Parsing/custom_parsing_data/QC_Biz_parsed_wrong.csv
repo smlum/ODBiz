@@ -1,0 +1,235 @@
+﻿idx,localfile,business_name,full_address,pattern,LP2_unit,LP2_street_no,spill,LP_street_no,LP_street_name,LP_City,LP_Province,LP_PostCode,LP_Unit,LP3_unit
+41a9d66adbf64ed0be7e,QC_Etablissements.csv,MAHEU & MAHEU INC.,F-G-1390 RUE Newton,<unit>-<street_no> <street_name>,f--g,1390,1390,f--g--1390,rue newton,,,,,f
+b311a3888f6e6f80e7b7,QC_Etablissements.csv,TECNIC MOTO GATINEAU (AYLMER),C-6-B-181 RUE Principale,<unit>-<street_no> <street_name>,c--6--b,181,b-181,c--6--b--181,rue principale,,,,,c
+34ecc47c62e630151736,QC_Etablissements.csv,SYNDICAT DE LA COPROPRIÉTÉ LE MONT ST- GRÉGOIRE PHASE I,"487-489-491, RUE ST-JOSEPH","<unit>-<street_no>, <street_name>",487--489,491,491,487--489--491,rue st-joseph,,,,,487
+284c6081b54e67aa8f9c,QC_Etablissements.csv,"LE GROUPE AMYOT, GÉLINAS INC.",3-4-55 RUE De Martigny,<unit>-<street_no> <street_name>,3--4,55,55,3--4--55,rue de martigny,,,,,3
+c9d155034ba230360ab7,QC_Etablissements.csv,CLUB C,H-022-3333 RUE du Carrefour,<unit>-<street_no> <street_name>,h--022,3333,3333,h--022--3333,rue du carrefour,,,,,h
+c54d9ea15b2719771e63,QC_Etablissements.csv,ÉGLISE ÉVANGÉLIQUE DE LA NOUVELLE ALLIANCE,"3455-3457-3459, RUE BÉLAIR",<unit>-<street_no> <street_name>,3455--3457,3459,3459,3455--3457--3459,rue bélair,,,,,3455
+b0320015e3acdbe50a04,QC_Etablissements.csv,CENTRE D'ASSISTANCE ET D'ACCOMPAGNEMENT AUX PLAINTES - CÔTE-NORD (CAAP - CÔTE-NORD),E-010-94 RUE Monseigneur-Blanche,<unit>-<street_no> <street_name>,e--010,94,94,e--010--94,rue monseigneur-blanche,,,,,e
+69084816edfbe952916a,QC_Etablissements.csv,CENTRE DESRANLEAU,324-C-71 RUE de Ramezay,<unit>-<street_no> <street_name>,324--c,71,71,324--c--71,rue de ramezay,,,,,324
+b544048a73c9c2ba8ae0,QC_Etablissements.csv,MUSÉE DES ONDES ÉMILE BERLINER,E-206-1001 RUE Lenoir,<unit>-<street_no> <street_name>,e--206,1001,1001,e--206--1001,rue lenoir,,,,,e
+42dafeaf9b73b5f52256,QC_Etablissements.csv,SOLLIO GROUPE COOPÉRATIF,RUE BÉCANCOUR PARTIE 15-F-1 RANG 5,<street_name> <unit>-<street_no> <???>,15--f,1,1,15--f--1,rang 5,,,,,15
+8e9023e47fa70550ba10,QC_Etablissements.csv,Édifice CSQ Québec,RC-105-320 RUE Saint-Joseph E,<unit>-<street_no> <street_name>,rc--105,320,320,rc--105--320,rue saint-joseph e,,,,,rc
+87966648005e979010da,QC_Etablissements.csv,AUTOMOBILE RIMEK INC.,2-4-6-222 RUE Poirier,<unit>-<street_no> <street_name>,2--4--6,222,6-222,2--4--6--222,rue poirier,,,,,2
+2ce4d8802fbd7dcb8163,QC_Etablissements.csv,ECOLE DE CONDUITE LAUZON ST-JOSEPH ENR,C-6B-181 RUE Principale,<unit>-<street_no> <street_name>,c--6b,181,181,c--6b--181,rue principale,,,,,c
+5a6cb82d7cb1243723d7,QC_Etablissements.csv,"G., J., M. NAUD LTEE","197-199-201, RUE ST-DOMINIQUE","<unit>-<street_no>, <street_name>",197--199,201,201,197--199--201,rue st-dominique,,,,,197
+851bfa0c3b7902f24682,QC_Etablissements.csv,DARMIEUX INC,"2929-2939-2949, RUE PICARD","<unit>-<street_no>, <street_name>",2929--2939,2949,2949,2929--2939--2949,rue picard,,,,,2929
+d6981c9b09817435aba1,QC_Etablissements.csv,DARMIEUX INC,"781-785-789-791, RUE HÉLÈNE BOULLÉ","<unit>-<street_no>, <street_name>",781--785--789,791,789-791,781--785--789--791,rue hélène boullé,,,,,781
+d5a3c29ef5045f88b04c,QC_Etablissements.csv,DARMIEUX INC,"595-625-655, BOUL. CASAVANT EST","<unit>-<street_no>, <street_name>",595--625,655,655,595--625--655,boul. casavant est,,,,,595
+2b86920fa2a7cdbc7bd4,QC_Etablissements.csv,COOPÉRATIVE D'HABITATION CONCERTO DE MONTRÉAL,"3548A-B-C, RUE STE-FAMILLE","<street_no><unit>, <street_name>",3548a--b,c,c,3548a--b--c,rue ste-famille,,,,,3548a
+a68a060ca32adc8828cc,QC_Etablissements.csv,COOPÉRATIVE D'HABITATION CONCERTO DE MONTRÉAL,"3540-42-44A-B-C, RUE STE-FAMILLE","<street_no>-<unit>, <street_name>",3540--42--44a--b,c,44a-b-c,3540--42--44a--b--c,rue ste-famille,,,,,3540
+4cea6d535b0305b718ac,QC_Etablissements.csv,"INDUSTRIELLE ALLIANCE, ASSURANCE AUTO ET HABITATION INC.",A-200-3200 RUE King O,<unit>-<street_no> <street_name>,a--200,3200,3200,a--200--3200,rue king o,,,,,a
+c4a5f5bc4cc9dfaa6e53,QC_Etablissements.csv,LNLC INC.,18-19-1111 BOUL. Jutras E,<unit>-<street_no> <street_name>,18--19,1111,1111,18--19--1111,boul. jutras e,,,,,18
+afad0166434fa6684f2d,QC_Etablissements.csv,LES SERVICES PARAJUDICIAIRES AUTOCHTONES DU QUÉBEC,RC24-2-700 RUE 7e Rue,<unit>-<street_no> <street_name>,rc24--2,700,700,rc24--2--700,rue 7e rue,,,,,rc24
+338b97e202f529e281a0,QC_Etablissements.csv,L'ASSOCIATION GENERALE DES ETUDIANTS DU C.E.G.E.P.DE ST-JEROME INC.,C-126G-455 RUE Fournier,<unit>-<street_no> <street_name>,c--126g,455,455,c--126g--455,rue fournier,,,,,c
+e5313a1799370fc833c2,QC_Etablissements.csv,LE GRENIER,"7373 boul. Langelier, Local F03-04-05",<street_no> <street_name> <unit>,local f03--04,05,05,local f03--04--05,boul. langelier,,,,,local f03
+617c02fc3f4adb2bffb1,QC_Etablissements.csv,LE GRENIER,B5-B6-181 rue Principale,<unit>-<street_no> <street_name>,b5--b6,181,181,b5--b6--181,rue principale,,,,,b5
+049ab01f21736d49b4df,QC_Etablissements.csv,LES ÉDITIONS MANUKA,38-2-222 BOUL. Henri-Bourassa E,<unit>-<street_no> <street_name>,38--2,222,222,38--2--222,boul. henri-bourassa e,,,,,38
+10daa17a4d3c43ddd864,QC_Etablissements.csv,MARIE CLAIRE,M-2/6-1100 BOUL. Maloney O,<unit>-<street_no> <street_name>,m--2/6,1100,1100,m--2/6--1100,boul. maloney o,,,,,m
+7b35bbf5d82b813fe389,QC_Etablissements.csv,TERRA NOSTRA (TMA),1100 Boul. Maloney Z9-10-11-12 O,<street_no> <street_name> <unit>,z9--10--11,12 o,11-12 o,z9--10--11--12 o,boul. maloney,,,,,z9
+8be2a01feda26b4aa82d,QC_Etablissements.csv,129270 CANADA LTÉE,"1015-1017-1019, RUE ATWATER","<unit>-<street_no>, <street_name>",1015--1017,1019,1019,1015--1017--1019,rue atwater,,,,,1015
+5366c979703d051e6835,QC_Etablissements.csv,Signaleurs de la Capitale,SS-09-650 RUE Graham-Bell,<unit>-<street_no> <street_name>,ss--09,650,650,ss--09--650,rue graham-bell,,,,,ss
+8bb9b86958fe66098568,QC_Etablissements.csv,COOPÉRATIVE D'HABITATION LABADIE (MONTRÉAL),"367-369-371-373, RUE LABADIE","<unit>-<street_no>, <street_name>",367--369--371,373,371-373,367--369--371--373,rue labadie,,,,,367
+9b70b5da3d5a2ad5c178,QC_Etablissements.csv,COOP LOGEMENT BARQUE,"840-850-860, DESPRÉS","<unit>-<street_no>, <street_name>",840--850,860,860,840--850--860,després,,,,,840
+07dc69cf130343459715,QC_Etablissements.csv,COOP À L'ÉTAGE,"134-136-138, 10E RUE","<unit>-<street_no>, <street_name>",134--136,138,138,134--136--138,10e rue,,,,,134
+79a84d3c6056a40b2150,QC_Etablissements.csv,CO-OP D'HABITATION MASKOU DE ST-HYACINTHE,"730-740-750, CHOQUETTE","<unit>-<street_no>, <street_name>",730--740,750,750,730--740--750,choquette,,,,,730
+0e49d839b7445e9031e7,QC_Etablissements.csv,SYNDICAT DE LA COPROPRIÉTÉ LE MONT ST-GRÉGOIRE PHASE 2,"517-519-521, ST-JOSEPH","<unit>-<street_no>, <street_name>",517--519,521,521,517--519--521,st-joseph,,,,,517
+18d58f0bde9e34848ba8,QC_Etablissements.csv,PLACE DES COMPAGNONS,"838-844-850, RUE GRAND-JEAN","<unit>-<street_no>, <street_name>",838--844,850,850,838--844--850,rue grand-jean,,,,,838
+6f25db6f4dc9cac0221f,QC_Etablissements.csv,LES AGENCES PRODEX,600-F-18005 RUE Lapointe,<unit>-<street_no> <street_name>,600--f,18005,18005,600--f--18005,rue lapointe,,,,,600
+27d97b36025ea3653764,QC_Etablissements.csv,CENTRE D'ASSISTANCE ET D'ACCOMPAGNEMENT AUX PLAINTES - GASPÉSIE/ÎLES-DE-LA-MADELEINE,L-1-447 RUE des Bouvreuils,<unit>-<street_no> <street_name>,l--1,447,447,l--1--447,rue des bouvreuils,,,,,l
+cef9e013da8f28673a80,QC_Etablissements.csv,CENTRE D'ASSISTANCE ET D'ACCOMPAGNEMENT AUX PLAINTES - GASPÉSIE/ÎLES-DE-LA-MADELEINE,L-22-37 RUE Chrétien,<unit>-<street_no> <street_name>,l--22,37,37,l--22--37,rue chrétien,,,,,l
+6a5f015bccb7f719cd4d,QC_Etablissements.csv,"COOPÉRATIVE D'HABITATION ""CHEZ NOUS"" DE QUÉBEC","754-758-762, RAOUL JOBIN",<unit>-<street_no> <street_name>,754--758,762,762,754--758--762,raoul jobin,,,,,754
+aa9f37eb5ea24d83cb5f,QC_Etablissements.csv,REGULVAR INC.,F-1-60 RUE ÉVÊCHÉ O,<unit>-<street_no> <street_name>,f--1,60,60,f--1--60,rue évêché o,,,,,f
+cdbc7c90cbe3e493c2a9,QC_Etablissements.csv,A.G.É.CO.V. ASSOCIATION GÉNÉRALE DES ÉTUDIANTS DU COLLÈGE DE VALLEYFIELD INC.,C-120-169 RUE Champlain SO,<unit>-<street_no> <street_name>,c--120,169,169,c--120--169,rue champlain so,,,,,c
+cb20a9047b0141883b0d,QC_Etablissements.csv,SYNDICAT DE LA COPROPRIÉTÉ LE ALEXIS-LEBERT 111,"1252-1254-1256, RUE ALEXIS-LEBERT","<unit>-<street_no>, <street_name>",1252--1254,1256,1256,1252--1254--1256,rue alexis-lebert,,,,,1252
+0cf8202844e090ef3dfa,QC_Etablissements.csv,ESPACE BLEU,"268-270-272, DES PINS EST","<unit>-<street_no>, <street_name>",268--270,272,272,268--270--272,des pins est,,,,,268
+d697631db71e5b348482,QC_Etablissements.csv,HIMALAYA SÉNIORS DU QUÉBEC,SS-14-419 RUE Saint Roch,<unit>-<street_no> <street_name>,ss--14,419,419,ss--14--419,rue saint roch,,,,,ss
+1f1e23b75267db371a4b,QC_Etablissements.csv,CAFÉ DE LA MONTÉRÉGIE INC.,A-1-3125 RUE Bernard Pilon,<unit>-<street_no> <street_name>,a--1,3125,3125,a--1--3125,rue bernard pilon,,,,,a
+d18f9621b160900f0e57,QC_Etablissements.csv,GESTION VAN GEENHOVEN LTÉE,2506-2508-2510 RUE BEAUBIEN,<unit>-<street_no> <street_name>,2506--2508,2510,2510,2506--2508--2510,rue beaubien,,,,,2506
+4ada2b03b5ba60c71f71,QC_Etablissements.csv,HÉMA-QUÉBEC,A-170-3200 RUE King O,<unit>-<street_no> <street_name>,a--170,3200,3200,a--170--3200,rue king o,,,,,a
+afddf9c141f4bf62a50d,QC_Etablissements.csv,BAR LE BAROMÈTRE,E-220-300 Allée des Ursulines,<unit>-<street_no> <street_name>,e--220,300,300,e--220--300,allée des ursulines,,,,,e
+779ce5c210cdcedea94a,QC_Etablissements.csv,CAFÉ L'AURICULAIRE,E-220-300 Allée des Ursulines,<unit>-<street_no> <street_name>,e--220,300,300,e--220--300,allée des ursulines,,,,,e
+7d30c3454c0ec33298b2,QC_Etablissements.csv,ASSOCIATION GÉNÉRALE ÉTUDIANTE DU CAMPUS DE RIMOUSKI DE L'UNIVERSITÉ DU QUÉBEC À RIMOUSKI (AGECAR),E-220-300 Allée des Ursulines,<unit>-<street_no> <street_name>,e--220,300,300,e--220--300,allée des ursulines,,,,,e
+357878bc979dcb1dfe91,QC_Etablissements.csv,A. BÉDARD & ASSOCIÉS INC.,S.-SOL-178 RUE HOULE,<unit>-<street_no> <street_name>,s.--sol,178,178,s.--sol--178,rue houle,,,,,s.
+076148e6294aefe02c0b,QC_Etablissements.csv,IVANHOÉ CAMBRIDGE INC.,C-500-1001 RUE Square Victoria,<unit>-<street_no> <street_name>,c--500,1001,1001,c--500--1001,rue square,victoria,,,,c
+daae9d89de86bc1e2208,QC_Etablissements.csv,SYNDICAT DE LA COPROPRIÉTÉ CARRÉ ST-JACQUES 3C,"9990-9992-9994, CROISSANT ROCHELLE","<unit>-<street_no>, <street_name>",9990--9992,9994,9994,9990--9992--9994,croissant rochelle,,,,,9990
+e5652fe52933bbdbf680,QC_Etablissements.csv,CENTRE MÉDICAL WESTMOUNT SQUARE,550-2-1 Carré Westmount,<unit>-<street_no> <street_name>,550--2,1,1,550--2--1,carré westmount,,,,,550
+3081f6ccdef05e0eb772,QC_Etablissements.csv,COOPÉRATIVE D'HABITATION L'AFFICHE ROUGE (MTL),"4431-4451-4461, 18E AVENUE","<unit>-<street_no>, <street_name>",4431--4451,4461,4461,4431--4451--4461,18e avenue,,,,,4431
+bee6ab7ec1a494149ac9,QC_Etablissements.csv,SEEA CHAPITRE DE MONTRÉAL,A-6055-1255 RUE St-Denis,<unit>-<street_no> <street_name>,a--6055,1255,1255,a--6055--1255,rue st-denis,,,,,a
+7e08a6fa9956d3238ea5,QC_Etablissements.csv,SYNDICAT DE COPROPRIÉTÉ DE L'IMMEUBLE 7013,"3902-04-06, RUE NOTRE-DAME OUEST","<unit>-<street_no>, <street_name>",3902--04,06,06,3902--04--06,rue notre-dame ouest,,,,,3902
+d548140cf18d81cd7ba0,QC_Etablissements.csv,THAI EXPRESS,C-28-1001 RUE UNIVERSITY,<unit>-<street_no> <street_name>,c--28,1001,1001,c--28--1001,rue university,,,,,c
+cdce5d659eeaffa888bd,QC_Etablissements.csv,SYNDICAT DE LA COPROPRIÉTÉ FAUBOURG SAINT-BASILE 1851,32-14-34 RUE SAVARIA,<unit>-<street_no> <street_name>,32--14,34,34,32--14--34,rue savaria,,,,,32
+465140fb12eb4b9b162f,QC_Etablissements.csv,Physio Atlas Complexe de la Santé,A-210-15 RUE J-A Bombardier,<unit>-<street_no> <street_name>,a--210,15,15,a--210--15,rue j-a bombardier,,,,,a
+73b6bb406fd2ed3edb05,QC_Etablissements.csv,Institut PH,7-313-695 CH. Avila,<unit>-<street_no> <street_name>,7--313,695,695,7--313--695,ch. avila,,,,,7
+66dca5085aef7df6000e,QC_Etablissements.csv,OCCASION VR,C-D-170 RUE des Entreprises,<unit>-<street_no> <street_name>,c--d,170,170,c--d--170,rue des entreprises,,,,,c
+d22f10f268a59e28eddf,QC_Etablissements.csv,RÉÉÉMI,A-1303-101 RUE ST-Jean Bosco,<unit>-<street_no> <street_name>,a--1303,101,101,a--1303--101,rue st-jean bosco,,,,,a
+58a3b82f5f579f83ecac,QC_Etablissements.csv,SYNDICAT DE LA COPROPRIÉTÉ ROBERVAL 2680,1650-1652-1654 BOULEVARD ROBERVAL EST,<unit>-<street_no> <street_name>,1650--1652,1654,1654,1650--1652--1654,boulevard roberval est,,,,,1650
+dfa1567bc2b728ad6e58,QC_Etablissements.csv,SYNDICAT DE LA COPROPRIÉTÉ ROBERVAL 2677,"1622-1620-1622-1624, BOUL. ROBERVAL E.","<unit>-<street_no>, <street_name>",1622--1620--1622,1624,1622-1624,1622--1620--1622--1624,boul. roberval e.,,,,,1622
+497a9fe988ca5013fa90,QC_Etablissements.csv,SYNDICAT DE LA COPROPRIÉTÉ ROBERVAL 2676,"1610-1612-1614, BOUL. ROBERVAL EST","<unit>-<street_no>, <street_name>",1610--1612,1614,1614,1610--1612--1614,boul. roberval est,,,,,1610
+e49f1183e75dcdd2fb87,QC_Etablissements.csv,9182-9481 QUÉBEC INC.,SS-08-650 RUE Graham-Bell,<unit>-<street_no> <street_name>,ss--08,650,650,ss--08--650,rue graham-bell,,,,,ss
+bdc85bf25e6c43876bde,QC_Etablissements.csv,IMMEUBLES DESJARDINS GAUTHIER INC.,600-F-18005 RUE LAPOINTE,<unit>-<street_no> <street_name>,600--f,18005,18005,600--f--18005,rue lapointe,,,,,600
+a3f5e055f288f67737fd,QC_Etablissements.csv,SYNDICAT DE COPROPRIÉTÉ 135-137-139 KING-GEORGE,"135-137-139, KING GEORGE","<unit>-<street_no>, <street_name>",135--137,139,139,135--137--139,king george,,,,,135
+c78aa52ad180da56d98c,QC_Etablissements.csv,BAMBOO GROUPE FINANCIER,G-102-360 RUE St-Jacques O,<unit>-<street_no> <street_name>,g--102,360,360,g--102--360,rue st-jacques o,,,,,g
+eff0d8a1c4bc43b957de,QC_Etablissements.csv,ASSURANCES KARINE LEGAULT INC.,4-B-118B RUE Principale E,<unit>-<street_no> <street_name>,4--b,118b,118b,4--b--118b,rue principale e,,,,,4
+6f6f7a143c184535b7a1,QC_Etablissements.csv,Grand Cru V,50-b-15 RUE Merry Sud,<unit>-<street_no> <street_name>,50--b,15,15,50--b--15,rue merry sud,,,,,50
+9a366fe26f45f8764adb,QC_Etablissements.csv,PHOENIXX STRATÉGIES ET SOLUTIONS D'AFFAIRES,310-3-725 BOUL. Lebourgneuf,<unit>-<street_no> <street_name>,310--3,725,725,310--3--725,boul. lebourgneuf,,,,,310
+170c960fd28d450ee437,QC_Etablissements.csv,BOUTIQUE PRFKT PAR EUROPA,W-103-380 RUE Saint-Antoine,<unit>-<street_no> <street_name>,w--103,380,380,w--103--380,rue saint-antoine,,,,,w
+cf19d39f31560b0878b7,QC_Etablissements.csv,NSE AUTOMATECH INC.,#31-32-260 RUE ST-Urbain,<unit>-<street_no> <street_name>,#31--32,260,260,#31--32--260,rue st-urbain,,,,,#31
+583fdedc1920af74f281,QC_Etablissements.csv,Farhat Drummondville,B-6-520 BOUL. St-Joseph,<unit>-<street_no> <street_name>,b--6,520,520,b--6--520,boul. st-joseph,,,,,b
+f8441eae3bf14f0c230f,QC_Etablissements.csv,Centre Innova Soins,A-288-3333 RUE du Carrefour,<unit>-<street_no> <street_name>,a--288,3333,3333,a--288--3333,rue du carrefour,,,,,a
+b18949f249e6bf0bf35e,QC_Etablissements.csv,PROJET OUVERTURE INC.,B-111-900 RUE Lacasse,<unit>-<street_no> <street_name>,b--111,900,900,b--111--900,rue lacasse,,,,,b
+30b73779c3211a867103,QC_Etablissements.csv,NOHA BESTAWROS ET CHRISTIAN SHEFTESHY PHARMACIENS INC.,RC-02-9080 RUE Hochelaga,<unit>-<street_no> <street_name>,rc--02,9080,9080,rc--02--9080,rue hochelaga,,,,,rc
+e88faf32bb88c781acf8,QC_Etablissements.csv,Clinique de kinésiologie Vsquare,S-170-360 RUE St-Jacques,<unit>-<street_no> <street_name>,s--170,360,360,s--170--360,rue st-jacques,,,,,s
+6c0ff76fc493153b9db6,QC_Etablissements.csv,PRESSE CAFE,NR-01-1717 RUE BERRI,<unit>-<street_no> <street_name>,nr--01,1717,1717,nr--01--1717,rue berri,,,,,nr
+4cef9377474fba3b8808,QC_Etablissements.csv,KIN SANG AGENCE DE VOYAGES INC.,2-12-998 BOUL. St-Laurent,<unit>-<street_no> <street_name>,2--12,998,998,2--12--998,boul. st-laurent,,,,,2
+cad2408c0e5485b47ca8,QC_Etablissements.csv,TRATTORIA TEVERE À PLACE VICTORIA,C-12A-800 RUE SQUARE VICTORIA,<unit>-<street_no> <street_name>,c--12a,800,800,c--12a--800,rue square,victoria,,,,c
+3d559275d8f6a93f4b6f,QC_Etablissements.csv,Fabienne Parente M.D. inc.,C-447-2300 RUE Tupper,<unit>-<street_no> <street_name>,c--447,2300,2300,c--447--2300,rue tupper,,,,,c
+18cf4844cf065c7a7991,QC_Etablissements.csv,SYSTÈMES NUMÉRIQUES CHRISTIE CANADA,B-528-1001 RUE Lenoir,<unit>-<street_no> <street_name>,b--528,1001,1001,b--528--1001,rue lenoir,,,,,b
+14e0fd9d6bba70050087,QC_Etablissements.csv,Lib. aménagement de bureau inc.,A-410b-1001 RUE Lenoir,<unit>-<street_no> <street_name>,a--410b,1001,1001,a--410b--1001,rue lenoir,,,,,a
+b6176fcdd76028a00ff8,QC_Etablissements.csv,École de Conduite DeLuxe,200-2-298 RUE Labelle,<unit>-<street_no> <street_name>,200--2,298,298,200--2--298,rue labelle,,,,,200
+ca7ddd26b61764f74d53,QC_Etablissements.csv,La Confiserie Sweet Factory,B-01-401 BOUL. Labelle,<unit>-<street_no> <street_name>,b--01,401,401,b--01--401,boul. labelle,,,,,b
+6aa5059e1dfb4e18614a,QC_Etablissements.csv,"Industrielle Alliance, Assurance et services financiers inc.",A-200-3200-A RUE King O,???,a--200--3200,a,3200-a,a--200--3200--a,rue king o,,,,,a
+2be8c0dda26ed93d9e19,QC_Etablissements.csv,9266-6726 Québec inc.,F-1-75 CH. de la Gare,<unit>-<street_no> <street_name>,f--1,75,75,f--1--75,ch. de la gare,,,,,f
+3c1ba4d049f2d2b0d589,QC_Etablissements.csv,Thaï Express (MC),#FC-06-401 BOUL. Labelle,<unit>-<street_no> <street_name>,#fc--06,401,401,#fc--06--401,boul. labelle,,,,,#fc
+612a25fbba15bbb3206e,QC_Etablissements.csv,LES INVESTISSEMENTS VINSTEVE INC.,900-28-1980 Sherbrooke Street W.,<unit>-<street_no> <street_name>,900--28,1980,1980,900--28--1980,sherbrooke street w.,,,,,900
+e0f4ed516b752957f9cb,QC_Etablissements.csv,Amyot Gélinas Conseils Inc.,3-4-255 RUE De Martigny O,<unit>-<street_no> <street_name>,3--4,255,255,3--4--255,rue de martigny o,,,,,3
+190a49f20bdd2ded8750,QC_Etablissements.csv,accessoires mode Cléopâtre,M-32-555 RUE Chabanel O,<unit>-<street_no> <street_name>,m--32,555,555,m--32--555,rue chabanel o,,,,,m
+abfc30ed6b1c0aa9b15f,QC_Etablissements.csv,Tabagie Lulu,G-03-276 RUE St-Jacques,<unit>-<street_no> <street_name>,g--03,276,276,g--03--276,rue st-jacques,,,,,g
+8a810808d14448bdf2bd,QC_Etablissements.csv,SANCTUAIRE DE L'ABONDANCE,308-7-695 CH. AVILA,<unit>-<street_no> <street_name>,308--7,695,695,308--7--695,ch. avila,,,,,308
+c89302272aa66f238ec6,QC_Etablissements.csv,SYSTÈMES STUDIOTEC INC.,C-305-1 Carré Westmount,<unit>-<street_no> <street_name>,c--305,1,1,c--305--1,carré westmount,,,,,c
+6819ff7a6e151b55c40c,QC_Etablissements.csv,RESTAURANT SUBWAY SHERBROOKE OUEST,F-15-1000 RUE SHERBROOKE O,<unit>-<street_no> <street_name>,f--15,1000,1000,f--15--1000,rue sherbrooke o,,,,,f
+2a60ee8ca53028a7d0be,QC_Etablissements.csv,Coopérative de l'Université de Sherbrooke - Succursale Séminaire de Sherbrooke,C-140-195 RUE Marquette,<unit>-<street_no> <street_name>,c--140,195,195,c--140--195,rue marquette,,,,,c
+94bbf237c9ea582fe100,QC_Etablissements.csv,AMARIS CONSEIL INC.,M-201-360 rue Saint Jacques O,<unit>-<street_no> <street_name>,m--201,360,360,m--201--360,rue saint jacques o,,,,,m
+1137d4535f5a0d622ce7,QC_Etablissements.csv,Au Vieux Duluth Beauport,A-55-3333 RUE du Carrefour,<unit>-<street_no> <street_name>,a--55,3333,3333,a--55--3333,rue du carrefour,,,,,a
+7dacb95b366ddc50a793,QC_Etablissements.csv,KASA LIVING ®,1-08-401 BOUL. Labelle,<unit>-<street_no> <street_name>,1--08,401,401,1--08--401,boul. labelle,,,,,1
+e440b4993d7baf8fe29e,QC_Etablissements.csv,Immigration Keleny Inc.,900-21-1980 RUE Sherbrooke O,<unit>-<street_no> <street_name>,900--21,1980,1980,900--21--1980,rue sherbrooke o,,,,,900
+5f706a3d347d708ef376,QC_Etablissements.csv,Clinique de Chirurgie de Chicoutimi,C-700-930 RUE Jacques-Cartier,<unit>-<street_no> <street_name>,c--700,930,930,c--700--930,rue jacques-cartier,,,,,c
+4b9b02f060b0a862f9a8,QC_Etablissements.csv,INDUSTRIA BRASSERIE ITALIENNE,C-112-100 RUE Peel,<unit>-<street_no> <street_name>,c--112,100,100,c--112--100,rue peel,,,,,c
+dbad2ece1a1c832985d9,QC_Etablissements.csv,Dre Marie-Natacha Pilotte Inc.,C-700-930 RUE Jacques Cartier,<unit>-<street_no> <street_name>,c--700,930,930,c--700--930,rue jacques cartier,,,,,c
+a1242073196ee7899fd6,QC_Etablissements.csv,Salon G,J-M870-315 RUE Sainte-Catherine E,<unit>-<street_no> <street_name>,j--m870,315,315,j--m870--315,rue sainte-catherine e,,,,,j
+3138a005fe5d9abc9fb7,QC_Etablissements.csv,Fromagerie-Charcuterie Juliette,15-16-1200 CH. Saint-Jean,<unit>-<street_no> <street_name>,15--16,1200,1200,15--16--1200,ch. saint-jean,,,,,15
+2ee00320f96a49361cc4,QC_Etablissements.csv,CARAVELLE II,"C-136-747 , rue du Square-Victoria","<unit>-<street_no> , <street_name>",c--136,747,747,c--136--747,rue du square-victoria,,,,,c
+880e64dc026ca2deb149,QC_Etablissements.csv,RESTAURANT BAGUETTES DE SZECHUAN,G-H-I-1950 CH. du Fer-à-Cheval,<unit>-<street_no> <street_name>,g--h--i,1950,i-1950,g--h--i--1950,ch. du fer-à-cheval,,,,,g
+584378b42344c83c00f6,QC_Etablissements.csv,DROITS ET RECOURS EN SANTÉ MENTALE DE LA CÔTE-NORD,E-010-94 RUE Monseigneur-Blanche,<unit>-<street_no> <street_name>,e--010,94,94,e--010--94,rue monseigneur-blanche,,,,,e
+7e9e42e3d3113a622f51,QC_Etablissements.csv,Gestion C.R.D. et associés Inc.,2-197-2 RUE Paré,<unit>-<street_no> <street_name>,2--197,2,2,2--197--2,rue paré,,,,,2
+3110aa496d0b9006bbd1,QC_Etablissements.csv,SANTÉ CANNABIS,A-260-15 RUE J.A. Bombardier,<unit>-<street_no> <street_name>,a--260,15,15,a--260--15,rue j.a. bombardier,,,,,a
+a69da26cd6107a9ee449,QC_Etablissements.csv,DigiCommerce Inc.,C-215-1001 RUE Lenoir,<unit>-<street_no> <street_name>,c--215,1001,1001,c--215--1001,rue lenoir,,,,,c
+aa87a3112bdc031c86eb,QC_Etablissements.csv,RESTAURANT MITSUKI SUSHI BAR,30-8840 Local F15C-F15B Boul. Leduc,???,30--8840 local f15c,f15b,f15b,30--8840 local f15c--f15b,boul. leduc,,,,,30
+a44719949b179f9f5359,QC_Etablissements.csv,IMMEUBLES GASTON GINGRAS INC.,132-134 -136-138 rue Principale N,<unit>-<street_no> <street_name>,132--134 --136,138,136-138,132--134 --136--138,rue principale n,,,,,132
+603e2ead89dc15135561,QC_Etablissements.csv,UNI Vieux Montréal,SS-100-507 RUE Place D'Armes,<unit>-<street_no> <street_name>,ss--100,507,507,ss--100--507,rue place d'armes,,,,,ss
+8d518fe2e164ce771c2d,QC_Etablissements.csv,SERVICES DE CONSULTATION ALCANCE,204-1-765 RUE JARRY O,<unit>-<street_no> <street_name>,204--1,765,765,204--1--765,rue jarry o,,,,,204
+02f543b200484034ef1b,QC_Etablissements.csv,9335-2391 Québec inc.,C-314-1747 RUE CUNARD,<unit>-<street_no> <street_name>,c--314,1747,1747,c--314--1747,rue cunard,,,,,c
+8379899ddf1d100acd1e,QC_Etablissements.csv,Café plein cup inc.,E-1-181 RUE Principale,<unit>-<street_no> <street_name>,e--1,181,181,e--1--181,rue principale,,,,,e
+ac22bcc0d602cd1ff3a6,QC_Etablissements.csv,Pizzéria No900 SH King Ouest,A-130-3200 RUE King Ouest,<unit>-<street_no> <street_name>,a--130,3200,3200,a--130--3200,rue king ouest,,,,,a
+b1484ff360c56cb9ebeb,QC_Etablissements.csv,9343-3779 Québec inc.,45-d-190-B RUE Dorchester,???,45--d--190,b,190-b,45--d--190--b,rue dorchester,,,,,45
+57d5cf62872b8ff08014,QC_Etablissements.csv,LE GROUPE VÊTEMENTS PISTACHE,M-07-555 RUE Chabanel O,<unit>-<street_no> <street_name>,m--07,555,555,m--07--555,rue chabanel o,,,,,m
+64ddfec11a2151764f89,QC_Etablissements.csv,SOLIDARITÉ HUMAINE CANADA,218-B-6615 CH. COTE-DES-NEIGES,<unit>-<street_no> <street_name>,218--b,6615,6615,218--b--6615,ch. cote-des-neiges,,,,,218
+a0e8c8880507bb5904fe,QC_Etablissements.csv,9347-4658 Québec inc.,Ah-So-200 RUE promenade du Portage,<unit>-<street_no> <street_name>,ah--so,200,200,ah--so--200,rue promenade du portage,,,,,ah
+ce2dbf9249a60e5d4a4a,QC_Etablissements.csv,Éditions de L'Estuaire,B-301-300 allée des Ursulines,<unit>-<street_no> <street_name>,b--301,300,300,b--301--300,allée des ursulines,,,,,b
+b2a3d860e2212d5c1cc4,QC_Etablissements.csv,DISTRIBUTIONS BUBBLEMANIAC INC.,1-2-155 BOUL. Labbé N,<unit>-<street_no> <street_name>,1--2,155,155,1--2--155,boul. labbé n,,,,,1
+4a5159feea6f849630a6,QC_Etablissements.csv,Saccade Analytiques Inc.,C-0220-400 RUE Montfort,<unit>-<street_no> <street_name>,c--0220,400,400,c--0220--400,rue montfort,,,,,c
+d1f1adab32880a8210f5,QC_Etablissements.csv,LA CABINE T,2-115A-705 RUE Sainte-Catherine O,<unit>-<street_no> <street_name>,2--115a,705,705,2--115a--705,rue sainte-catherine o,,,,,2
+5261f774f0395436e511,QC_Etablissements.csv,Téléphonie Mobile Siyata,A-414-1001 RUE Lenoir,<unit>-<street_no> <street_name>,a--414,1001,1001,a--414--1001,rue lenoir,,,,,a
+e68ec1250c813654fb35,QC_Etablissements.csv,A L'ETAT PUR,NR-01-1717 RUE BERRI,<unit>-<street_no> <street_name>,nr--01,1717,1717,nr--01--1717,rue berri,,,,,nr
+4e718b5287094fb6a5bd,QC_Etablissements.csv,L'entreprise Technologique du Groupe DigiCommerce,C-215-1001 RUE Lenoir,<unit>-<street_no> <street_name>,c--215,1001,1001,c--215--1001,rue lenoir,,,,,c
+2cfc83fe2cb58b05012c,QC_Etablissements.csv,Syndicat de la copropriété 125 A-E Lapointe,A-E-125 RUE Lapointe,<unit>-<street_no> <street_name>,a--e,125,125,a--e--125,rue lapointe,,,,,a
+a39e526349ad7e6e01b7,QC_Etablissements.csv,FIQ-Syndicat des professionnelles en soins des Laurentides (FIQ-SPSL),S-309-100 rue du Chanoine-Lionel-Groulx,<unit>-<street_no> <street_name>,s--309,100,100,s--309--100,rue du chanoine-lionel-groulx,,,,,s
+6516c22baed935e16a6d,QC_Etablissements.csv,FIQ-Syndicat des professionnelles en soins des Laurentides (FIQ-SPSL),GS-18-185 rue Durand,<unit>-<street_no> <street_name>,gs--18,185,185,gs--18--185,rue durand,,,,,gs
+7b25b9b4d314dd38e691,QC_Etablissements.csv,FIQ-Syndicat des professionnelles en soins des Laurentides (FIQ-SPSL),A-0102-2561 ch. de la Lièvre S,<unit>-<street_no> <street_name>,a--0102,2561,2561,a--0102--2561,ch. de la lièvre s,,,,,a
+561a4fb4d5918e719b03,QC_Etablissements.csv,FIQ-Syndicat des professionnelles en soins des Laurentides (FIQ-SPSL),N-761-1525 rue L'Annonciation N,<unit>-<street_no> <street_name>,n--761,1525,1525,n--761--1525,rue l'annonciation n,,,,,n
+3e0d10b4e429e39fe546,QC_Etablissements.csv,FIQ-Syndicat des professionnelles en soins des Laurentides (FIQ-SPSL),RC-139-29 Vieux chemin d'Oka,<unit>-<street_no> <street_name>,rc--139,29,29,rc--139--29,vieux chemin d'oka,,,,,rc
+58dd6bac28df2452d900,QC_Etablissements.csv,FIQ-Syndicat des professionnelles en soins des Laurentides (FIQ-SPSL),ES-195-55 rue Chénier,<unit>-<street_no> <street_name>,es--195,55,55,es--195--55,rue chénier,,,,,es
+4ac83758c6844fce7e32,QC_Etablissements.csv,FIQ-Syndicat des professionnelles en soins des Laurentides (FIQ-SPSL),3-130-9100 rue Dumouchel,<unit>-<street_no> <street_name>,3--130,9100,9100,3--130--9100,rue dumouchel,,,,,3
+67f85483a24b9cad8e8e,QC_Etablissements.csv,Syndicat des professionnelles en soins de la Capital-Nationale,F-0878-2601 CH. de la Canardière,<unit>-<street_no> <street_name>,f--0878,2601,2601,f--0878--2601,ch. de la canardière,,,,,f
+15c83567d030730218d7,QC_Etablissements.csv,Société de philosophie des régions au coeur du Québec inc.,R-4052-3351 RUE des Forges,<unit>-<street_no> <street_name>,r--4052,3351,3351,r--4052--3351,rue des forges,,,,,r
+d93b6e88fc1be654ce57,QC_Etablissements.csv,Association des gens d’affaires du Vieux-Port de Québec,SS-3-109 rue Dalhousie,<unit>-<street_no> <street_name>,ss--3,109,109,ss--3--109,rue dalhousie,,,,,ss
+88dd89414cdb4adaa3a4,QC_Etablissements.csv,Westley - Artisans restaurateurs inc.,A-140-3200 RUE King Ouest,<unit>-<street_no> <street_name>,a--140,3200,3200,a--140--3200,rue king ouest,,,,,a
+35c90d4f808a9d8026f4,QC_Etablissements.csv,OverHop Bières Artisanales,5-6-650 RUE Gaudette,<unit>-<street_no> <street_name>,5--6,650,650,5--6--650,rue gaudette,,,,,5
+3658fcf27f6879f98fe0,QC_Etablissements.csv,"SYNDICAT CANADIEN DE LA FONCTION PUBLIQUE, SECTION LOCALE 3797",111-A-107E RUE Rue,<unit>-<street_no> <street_name>,111--a,107e,107e,111--a--107e,rue rue,,,,,111
+8425a218c0155c813d30,QC_Etablissements.csv,2867-8118 QUÉBEC INC.,CM-08-5440 RUE Sherbrooke E,<unit>-<street_no> <street_name>,cm--08,5440,5440,cm--08--5440,rue sherbrooke e,,,,,cm
+a463974e6fa8a3be857e,QC_Etablissements.csv,SUBWAY # 26176,100-5-900 BOUL. Grignon,<unit>-<street_no> <street_name>,100--5,900,900,100--5--900,boul. grignon,,,,,100
+4249a879464006faf961,QC_Etablissements.csv,L'Abeille impériale inc.,A-291-3333 RUE du Carrefour,<unit>-<street_no> <street_name>,a--291,3333,3333,a--291--3333,rue du carrefour,,,,,a
+e53d3a38dc4b5381a9d1,QC_Etablissements.csv,Fenghua Média Groupe du Canada,#00-04-200 BOUL. René-Lévesque O,<unit>-<street_no> <street_name>,#00--04,200,200,#00--04--200,boul. rené-lévesque o,,,,,#00
+45a9e95c102cad3e5db9,QC_Etablissements.csv,AIESEC de l'École des sciences de la gestion de l'Université du Québec à Montréal,R-M213-315 RUE Sainte-Catherine E,<unit>-<street_no> <street_name>,r--m213,315,315,r--m213--315,rue sainte-catherine e,,,,,r
+8f80225d6342601caa83,QC_Etablissements.csv,FRANÇOIS GOUGEON INC.,7e-F-1051 RUE Sanguinet,<unit>-<street_no> <street_name>,7e--f,1051,1051,7e--f--1051,rue sanguinet,,,,,7e
+772d3dc3885f741a21dd,QC_Etablissements.csv,JITNEY EN LIGNE,g-102-360 RUE Saint-Jacques O,<unit>-<street_no> <street_name>,g--102,360,360,g--102--360,rue saint-jacques o,,,,,g
+7e6b3ca26b78bcd215d7,QC_Etablissements.csv,Sushi Haru Haru,E-7-181 RUE Principale,<unit>-<street_no> <street_name>,e--7,181,181,e--7--181,rue principale,,,,,e
+ac3bf716c68d9eba94d1,QC_Etablissements.csv,Comptabilité Incloud,100-06-7140 RUE Albert-Einstein,<unit>-<street_no> <street_name>,100--06,7140,7140,100--06--7140,rue albert-einstein,,,,,100
+b10befb0244abc2c2a8c,QC_Etablissements.csv,Puzzle Dispositifs Médicaux,A-419-1001 RUE Lenoir,<unit>-<street_no> <street_name>,a--419,1001,1001,a--419--1001,rue lenoir,,,,,a
+12074b21a97c990eb01c,QC_Etablissements.csv,Les Productions NewA inc.,A-13-39 RUE Kenosi,<unit>-<street_no> <street_name>,a--13,39,39,a--13--39,rue kenosi,,,,,a
+5609ef75374f9fc95c9e,QC_Etablissements.csv,GESTION IMMOBILIÈRE SBL INC.,210-6-44 RTE du Président-Kennedy,<unit>-<street_no> <street_name>,210--6,44,44,210--6--44,rte du président-kennedy,,,,,210
+fb9105dcc041cfd3e16b,QC_Etablissements.csv,Les Ingrédients Potentia,353-101-15 BLVD Don Quichotte,<unit>-<street_no> <street_name>,353--101,15,15,353--101--15,blvd don quichotte,,,,,353
+8179ddcdbb7b13e54791,QC_Etablissements.csv,LES SYSTÈMES BLUBRIM INC.,J-1120-400 RUE Montfort,<unit>-<street_no> <street_name>,j--1120,400,400,j--1120--400,rue montfort,,,,,j
+f011a82ba3d6abf3a824,QC_Etablissements.csv,Pizzeria Heirloom Le Central,K-10-30 rue Sainte-Catherine O,<unit>-<street_no> <street_name>,k--10,30,30,k--10--30,rue sainte-catherine o,,,,,k
+a5e414d8b70a0d80edfd,QC_Etablissements.csv,ORGANISATION CANADIENNE POUR LE DEVELOPPEMENT COLLECTIF,360-07-55 RUE LOUVAIN O,<unit>-<street_no> <street_name>,360--07,55,55,360--07--55,rue louvain o,,,,,360
+593ca78ed6569257b29c,QC_Etablissements.csv,Axya Inc.,J-2140-400 RUE Montfort,<unit>-<street_no> <street_name>,j--2140,400,400,j--2140--400,rue montfort,,,,,j
+890e4abd435325003310,QC_Etablissements.csv,Dépanneur LaRose,A1-225-10 RUE DE L'ESPINAY,<unit>-<street_no> <street_name>,a1--225,10,10,a1--225--10,rue de l'espinay,,,,,a1
+a4a46c9c7975d22f15f4,QC_Etablissements.csv,Clinique Multidisciplinaire d'Aylmer inc.,B-102-745 CH. Aylmer,<unit>-<street_no> <street_name>,b--102,745,745,b--102--745,ch. aylmer,,,,,b
+8da87d452f9ccd5d6545,QC_Etablissements.csv,Institut d'éthique en IA de Montréal,B-111-1001 RUE Lenoir,<unit>-<street_no> <street_name>,b--111,1001,1001,b--111--1001,rue lenoir,,,,,b
+177035089feadf6db9c4,QC_Etablissements.csv,Les cuisiniers différents,P-11-4200 CH. De la savanne,<unit>-<street_no> <street_name>,p--11,4200,4200,p--11--4200,ch. de la savanne,,,,,p
+5053d94174d7f2b4b4ba,QC_Etablissements.csv,9404-4567 Québec inc.,241-7-695 CH. Avila,<unit>-<street_no> <street_name>,241--7,695,695,241--7--695,ch. avila,,,,,241
+fdd92852c1e3ca9a971f,QC_Etablissements.csv,2760061 Canada Inc.,B-123-215 RUE Peel,<unit>-<street_no> <street_name>,b--123,215,215,b--123--215,rue peel,,,,,b
+20ffb322c2f24ae29b7c,QC_Etablissements.csv,Groupe DJ Santé Inc.,200-A-1388 RUE Fleury E,<unit>-<street_no> <street_name>,200--a,1388,1388,200--a--1388,rue fleury e,,,,,200
+4a790c19b59f693d15e9,QC_Etablissements.csv,La Canting,R-7-1751 RUE Richardson,<unit>-<street_no> <street_name>,r--7,1751,1751,r--7--1751,rue richardson,,,,,r
+d0896e7b829aa5cdcd38,QC_Etablissements.csv,Zéro émission,A-8440-3101 CH. DE LA TOUR,<unit>-<street_no> <street_name>,a--8440,3101,3101,a--8440--3101,ch. de la tour,,,,,a
+5c2a2a37ce603a4b62d0,QC_Etablissements.csv,COOPSCO CÉGEP DE GRANBY,C-104-235 RUE Saint-Jacques,<unit>-<street_no> <street_name>,c--104,235,235,c--104--235,rue saint-jacques,,,,,c
+b435916ab7a0ba44cb4c,QC_Etablissements.csv,TECHNOLOGIE PATRON LTÉE,B-252-1001 rue Lenoir,<unit>-<street_no> <street_name>,b--252,1001,1001,b--252--1001,rue lenoir,,,,,b
+00402963c194b5079056,QC_Etablissements.csv,iA Gestion privée de patrimoine inc.,R-10-200 RUE Montcalm,<unit>-<street_no> <street_name>,r--10,200,200,r--10--200,rue montcalm,,,,,r
+c49afc7f981d8f9f91f5,QC_Etablissements.csv,iA Gestion privée de patrimoine inc.,A-200-3200-A RUE King O,???,a--200--3200,a,3200-a,a--200--3200--a,rue king o,,,,,a
+cc303b5b1382e8c81432,QC_Etablissements.csv,LUNETTERIE NEW LOOK,B-30-A-95 RUE Sainte-Catherine O,<unit>-<street_no> <street_name>,b--30--a,95,a-95,b--30--a--95,rue sainte-catherine o,,,,,b
+445cafe67023ef39bc34,QC_Etablissements.csv,Greiche & Scaff,18-19-1111 BOUL. Jutras E,<unit>-<street_no> <street_name>,18--19,1111,1111,18--19--1111,boul. jutras e,,,,,18
+b05f06214a2893effe8a,QC_Etablissements.csv,Greiche & Scaff,3-110-705 RUE Sainte-Catherine O,<unit>-<street_no> <street_name>,3--110,705,705,3--110--705,rue sainte-catherine o,,,,,3
+22492ea45589e38e9c59,QC_Etablissements.csv,Greiche & Scaff,4-5-300 RUE Barkoff,<unit>-<street_no> <street_name>,4--5,300,300,4--5--300,rue barkoff,,,,,4
+8bcf5a7b7ec91310f51b,QC_Etablissements.csv,Greiche & Scaff,S10-12-6000 RUE Henri-Bourassa E,<unit>-<street_no> <street_name>,s10--12,6000,6000,s10--12--6000,rue henri-bourassa e,,,,,s10
+fdbbffa78139688f1dd9,QC_Etablissements.csv,BENNY & CO. (MC) - ESPACE MONTMORENCY,2-0107-1900 RUE Jacques-Tétreault,<unit>-<street_no> <street_name>,2--0107,1900,1900,2--0107--1900,rue jacques-tétreault,,,,,2
+5efe7cb40b05e6bff31b,QC_Etablissements.csv,La Clef de la Réussite Inc.,203-28-460 RUE Du Parc,<unit>-<street_no> <street_name>,203--28,460,460,203--28--460,rue du parc,,,,,203
+6ba6d4f882933532a7a6,QC_Etablissements.csv,"ELMALEH, DAVID",C-114-1001 RUE LENOIR,<unit>-<street_no> <street_name>,c--114,1001,1001,c--114--1001,rue lenoir,,,,,c
+06093219ba73ae9864ee,QC_Etablissements.csv,CLINIQUE CHIROPRATIQUE ST-CHARLES,B-8-101 RUE Amherst,<unit>-<street_no> <street_name>,b--8,101,101,b--8--101,rue amherst,,,,,b
+cd647fd2f72072be5a58,QC_Etablissements.csv,"veillette, serge",401 1er-et-10e Rang O,<street_no> <street_name>,401 1er--et,10e,10e,401 1er--et--10e,rang o,,,,,401 1er
+a9d1f0cb35d28b7dfbb8,QC_Etablissements.csv,Nico Suave,#R-5-174 BOUL. Greber,<unit>-<street_no> <street_name>,#r--5,174,174,#r--5--174,boul. greber,,,,,#r
+850dfa7196f2ba118e7e,QC_Etablissements.csv,SIGNATURE INVITATIONS,1123-B-433 RUE Chabanel O,<unit>-<street_no> <street_name>,1123--b,433,433,1123--b--433,rue chabanel o,,,,,1123
+6902a33acfa33bf8b27d,QC_Etablissements.csv,LA COUTELLERIE,7-33-455 AV. MATHERS,<unit>-<street_no> <street_name>,7--33,455,455,7--33--455,av. mathers,,,,,7
+7c791688dbb50a4cb382,QC_Etablissements.csv,Spa Dépot,12-13-55 RUE claude audy O,<unit>-<street_no> <street_name>,12--13,55,55,12--13--55,rue claude audy o,,,,,12
+3d280cc07ebf908dc59c,QC_Etablissements.csv,"RAPHAEL BARAZIN, CPA",Bur.10-360-55 RUE Louvain O,<unit>-<street_no> <street_name>,bur.10--360,55,55,bur.10--360--55,rue louvain o,,,,,bur.10
+360b7ee14ad9578dd953,QC_Etablissements.csv,MARIO LAMPRON INFIRMIER EN SOINS PODOLOGIQUES,212-A-1245 CH. SAINTE-FOY,<unit>-<street_no> <street_name>,212--a,1245,1245,212--a--1245,ch. sainte-foy,,,,,212
+4cb979e0e2d460c93179,QC_Etablissements.csv,Restaurant Japote,F-1-1000 RUE Sherbrooke O,<unit>-<street_no> <street_name>,f--1,1000,1000,f--1--1000,rue sherbrooke o,,,,,f
+1d9e6a6c8870e1e4f00c,QC_Etablissements.csv,V.R.B Studio,E-200-160 RUE St-Viateur E,<unit>-<street_no> <street_name>,e--200,160,160,e--200--160,rue st-viateur e,,,,,e
+07f8c376eb65ad679b4d,QC_Etablissements.csv,"KRACAUER, JOSEPH",PH-2-1130 RUE Sherbrooke O,<unit>-<street_no> <street_name>,ph--2,1130,1130,ph--2--1130,rue sherbrooke o,,,,,ph
+7b7045f37039cf87c5a1,QC_Etablissements.csv,Studio Kidz,6-2-15 rue de Rotterdam,<unit>-<street_no> <street_name>,6--2,15,15,6--2--15,rue de rotterdam,,,,,6
+bd060d2e92869214f2bd,QC_Etablissements.csv,CABINET D'IMMIGRATION RESIDER O CANADA,203-4-68 BOUL. Cartier O,<unit>-<street_no> <street_name>,203--4,68,68,203--4--68,boul. cartier o,,,,,203
+3f7867061df0b5002292,QC_Etablissements.csv,Cabinet d'orthophonie - Jessica Bélisle Macquart,B-102-745 CH. d'Aylmer,<unit>-<street_no> <street_name>,b--102,745,745,b--102--745,ch. d'aylmer,,,,,b
+3dd41c829a73ce24775c,QC_Etablissements.csv,Artiste Genest de Brière,100-03-17 rue de la Barricade,<unit>-<street_no> <street_name>,100--03,17,17,100--03--17,rue de la barricade,,,,,100
+e704d14474d25ed0c095,QC_Etablissements.csv,Chenil Doggy Doc,642 10e-et-1er Rang E,<street_no> <street_name>,642 10e--et,1er,1er,642 10e--et--1er,rang e,,,,,642 10e
+f91172554175112fcef4,QC_Etablissements.csv,Clinique d'Ostéopathie et Thérapie de Sport Le WorkShop,B-374-1001 RUE Lenoir,<unit>-<street_no> <street_name>,b--374,1001,1001,b--374--1001,rue lenoir,,,,,b
+fb9fa9161008007283af,QC_Etablissements.csv,"Serrano, Diana",200-E-160 RUE Saint Viateur E,<unit>-<street_no> <street_name>,200--e,160,160,200--e--160,rue saint viateur e,,,,,200
+577ddeedbd1d52428e5d,QC_Etablissements.csv,"Petit, Myriam",726 10e-et-1er Rang E,<street_no> <street_name>,726 10e--et,1er,1er,726 10e--et--1er,rang e,,,,,726 10e
+77d91f095838c140378b,QC_Etablissements.csv,Sam le rembourreur,001-B-2025-A RUE Masson,???,001--b--2025,a,2025-a,001--b--2025--a,rue masson,,,,,001
+e090b64635aa174b8c62,QC_Etablissements.csv,Extermination Wildlife Outaouais,6-7-225 RUE Principale,<unit>-<street_no> <street_name>,6--7,225,225,6--7--225,rue principale,,,,,6
+dcd895c29e56802e998f,QC_Etablissements.csv,Espace Mêve,7-8-51 BOUL. BOULEVARD,<unit>-<street_no> <street_name>,7--8,51,51,7--8--51,boul. boulevard,,,,,7
+aecd6922e9e194c8b982,QC_Etablissements.csv,Clinique de Masso Kinésithérapie Lebourgneuf,310-19-725 BOUL. Lebourgneuf,<unit>-<street_no> <street_name>,310--19,725,725,310--19--725,boul. lebourgneuf,,,,,310
+544ec05ed23932002ac2,QC_Etablissements.csv,Centre Des Ongles,B-01-1401 CH. Chambly,<unit>-<street_no> <street_name>,b--01,1401,1401,b--01--1401,ch. chambly,,,,,b
+9cbe66b9a097d08223c4,QC_Etablissements.csv,FERME ADJULO,726 10e-et-1er Rang E,<street_no> <street_name>,726 10e--et,1er,1er,726 10e--et--1er,rang e,,,,,726 10e
+5a8293e53b1aec51aabd,QC_Etablissements.csv,Atelier Express,A-29-11000A RUE Shebrooke E,???,a--29,11000a,11000a,a--29--11000a,rue shebrooke e,,,,,a
+90d49387929a22606cd6,QC_Etablissements.csv,"Tanguay , Eric",395 10e-et-1er Rang O,<street_no> <street_name>,395 10e--et,1er,1er,395 10e--et--1er,rang o,,,,,395 10e
+4efe70bf4937933c84c9,QC_Etablissements.csv,Atelier DNHN,282-A-2065 RUE Parthenais,<unit>-<street_no> <street_name>,282--a,2065,2065,282--a--2065,rue parthenais,,,,,282
+4a07872ce03c2f306eb1,QC_Etablissements.csv,Platinum Spa & Beauté,68-2-7500 BOUL. DES GALERIES D'ANJOU,<unit>-<street_no> <street_name>,68--2,7500,7500,68--2--7500,boul. des galeries d'anjou,,,,,68
+06f14f29c3733b82bfa7,QC_Etablissements.csv,VINTAGE MUSTS,CK-05-1 CARRÉ WESTMOUNT,<unit>-<street_no> <street_name>,ck--05,1,1,ck--05--1,carré westmount,,,,,ck
+35f09bb7e88965e92d48,QC_Etablissements.csv,LUXENCHANTE,236-54-102 BOUL. CITES DES JEUNES,<unit>-<street_no> <street_name>,236--54,102,102,236--54--102,boul. cites des jeunes,,,,,236
+a0b1c3092eeb256f89a7,QC_Etablissements.csv,"Young, Christopher",B-360-1001 RUE Lenoir,<unit>-<street_no> <street_name>,b--360,1001,1001,b--360--1001,rue lenoir,,,,,b
+fb90f3455a528cafabe7,QC_Etablissements.csv,"AMYOT GÉLINAS, s.e.n.c.r.l.",3-4-255 RUE De Martigny,<unit>-<street_no> <street_name>,3--4,255,255,3--4--255,rue de martigny,,,,,3
+5cf51debfb4feb5698a4,QC_Etablissements.csv,IMMEUBLES MAXIBEL ENR.,"1313-1315-1317, RUE MAGUIRE","<unit>-<street_no>, <street_name>",1313--1315,1317,1317,1313--1315--1317,rue maguire,,,,,1313
+85b604d5c336a774e4e9,QC_Etablissements.csv,LES PLACEMENTS LOPRÉ S.E.C.,"902-906-908, MGR GRANDIN","<unit>-<street_no>, <street_name>",902--906,908,908,902--906--908,mgr grandin,,,,,902
+eed543a8e5e2f46ee59f,QC_Etablissements.csv,Fiducie Gestion Immodo,340 -342-344 Rue Ernest-Bourque,<unit>-<street_no> <street_name>,340 --342,344,344,340 --342--344,rue ernest-bourque,,,,,340 
+b3c030d22183affbb84e,QC_Etablissements.csv,ATIS PORTES ET FENÊTRES,1015 -1025-1035 Chemin du Coteau,<unit>-<street_no> <street_name>,1015 --1025,1035,1035,1015 --1025--1035,chemin du coteau,,,,,1015 
+75523155ac3757ccd85c,QC_Etablissements.csv,Jeux de la Communication - UQÀM,J-1185-1564 RUE Saint-Denis,<unit>-<street_no> <street_name>,j--1185,1564,1564,j--1185--1564,rue saint-denis,,,,,j
+c57cc04195591a81712b,QC_Etablissements.csv,Le Borgne Rizk Architecture,A-417-1001 RUE Lenoir,<unit>-<street_no> <street_name>,a--417,1001,1001,a--417--1001,rue lenoir,,,,,a
+b7bdc5d7c3fff17cbf89,QC_Etablissements.csv,Syndicat des chargés et chargées de cours de l'Université du Québec à Rimouski (CSN),E-311-300 Allée des Ursulines,<unit>-<street_no> <street_name>,e--311,300,300,e--311--300,allée des ursulines,,,,,e
+79ff4e844641ad1bd8ac,QC_Etablissements.csv,Institut québécois d'ébénisterie,2-15-14 RUE Soumande,<unit>-<street_no> <street_name>,2--15,14,14,2--15--14,rue soumande,,,,,2
+88a34fdee09a056116ba,QC_Etablissements.csv,Le Département bar et bouffe,A-M640-400 RUE Sainte-Catherine E,<unit>-<street_no> <street_name>,a--m640,400,400,a--m640--400,rue sainte-catherine e,,,,,a
+b5ac59ff53552de3eeb0,QC_Etablissements.csv,OFFICE DES PERSONNES HANDICAPEES DU QUEBEC,CRC-02-85 RUE De Martigny O,<unit>-<street_no> <street_name>,crc--02,85,85,crc--02--85,rue de martigny o,,,,,crc
+7f215c592b0ccba1dd29,QC_Etablissements.csv,Ministère de l’Énergie et des Ressources naturelles,C-422-5700 4e Avenue O,<unit>-<street_no> <street_name>,c--422,5700,5700,c--422--5700,4e avenue o,,,,,c
+9d6117ca09404a211313,QC_Etablissements.csv,Ministère de l’Énergie et des Ressources naturelles,C-402-5700 4e Avenue O,<unit>-<street_no> <street_name>,c--402,5700,5700,c--402--5700,4e avenue o,,,,,c
+0f7dc5946ca4bdd75ea6,QC_Etablissements.csv,Ministère de l’Énergie et des Ressources naturelles,D-413-5700 4e Avenue O,<unit>-<street_no> <street_name>,d--413,5700,5700,d--413--5700,4e avenue o,,,,,d
+c7b6c147e788f759368e,QC_Etablissements.csv,DI Bas-Saint-Laurent et Gaspésie-îles-de-la-Madeleine,SS-20-337 rue Moreault,<unit>-<street_no> <street_name>,ss--20,337,337,ss--20--337,rue moreault,,,,,ss
+e8a43c4c35ec3031d652,QC_Etablissements.csv,Centre externe de néphrologie Saint-Lambert,19-20-299 BOUL. Sir-Wilfrid-Laurier,<unit>-<street_no> <street_name>,19--20,299,299,19--20--299,boul. sir-wilfrid-laurier,,,,,19
+8d38863e9cadf00179c7,QC_Etablissements.csv,GMF-R Collectif Médica,102-104-5700 rue Saint-Zotique E.,<unit>-<street_no> <street_name>,102--104,5700,5700,102--104--5700,rue saint-zotique e.,,,,,102
