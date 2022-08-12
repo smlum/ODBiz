@@ -10,8 +10,9 @@ def main():
     new_df_path = '/home/jovyan/ODBiz/4-Parsing/double_check/parsed_with_spillover.csv'
     df2_path = '/home/jovyan/ODBiz/4-Parsing/double_check/parsed_with_easy_blanket_rule.csv'
     dfTO_path = '/home/jovyan/ODBiz/4-Parsing/double_check/parsed_with_spillover_toronto.csv'
-    QC_parsed_wrong_df_path = '/home/jovyan/ODBiz/4-Parsing/double_check/QC_Biz_parsed_wrong.csv'
+    QC_parsed_wrong_df_path = '/home/jovyan/ODBiz/4-Parsing/custom_parsing_data/QC_Biz_parsed_wrong.csv'
     output_csv = '/home/jovyan/ODBiz/4-Parsing/output/2-parsed_biz.csv'
+    unparsed_addrs_path = '/home/jovyan/ODBiz/4-Parsing/custom_parsing_data/unparsed_addresses.csv'
     
     # Load the csv
     total_lines = 803658
@@ -101,9 +102,24 @@ def main():
     print('Updating the big parsed csv...')
     df.update(new_df)    
     df.loc[QC_wrong_idxs, ['LP2_unit', 'LP2_street_no']] = np.nan
-    # # I need to commit the changes in new_df into df!
     df.to_csv(output_csv, index = True)
     print(f'Saved new_df to {output_csv}')
+
+    # Output a csv of unparsed addresses (for entries with full_address)
+    conds = [
+            (~df['full_address'].isna()),               # full_address is not blank
+            (df['street_no'].isna()),                   # street_no is blank
+            (df['LP_street_no'].isna()),                # LP_street_no is blank
+            (df['LP2_street_no'].isna()),               # LP2_street_no is blank
+            (df['full_address'].str.contains(r'\d')),   # full_address contains a digit
+            ]
+    idxs = True
+    for i in conds:
+        idxs = idxs & i
+    unparsed_df = df.loc[idxs].copy()
+    unparsed_df.to_csv(unparsed_addrs_path, index = True)
+    print(f'Saved unparsed_df to {unparsed_addrs_path}')
+
     print('')
 
 if __name__ == '__main__':
