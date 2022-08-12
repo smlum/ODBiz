@@ -69,8 +69,6 @@ def main():
                     # 'Indigenous_Business_Directory.csv',
                     ]
     localfiles_idx = new_df['localfile'] == 'ON_Toronto_Business_Licences.csv'
-    # dfTO = new_df[localfiles_idx].copy()
-
     has_comma = new_df['full_address'].str.contains(',') & localfiles_idx
 
     # If there's no comma, set right most value as street_no, everything else is unit
@@ -96,7 +94,6 @@ def main():
     ]
     QC_wrong_idxs = QC_df.loc[~QC_df['pattern'].isin(common_pats), 'idx']
     new_df = new_df.set_index('idx')
-    # new_df.loc[QC_wrong_idxs, ['LP2_unit', 'LP2_street_no']] = '$'
     
     df = df.set_index('idx')
     print('Updating the big parsed csv...')
@@ -104,21 +101,35 @@ def main():
     df.loc[QC_wrong_idxs, ['LP2_unit', 'LP2_street_no']] = np.nan
     df.to_csv(output_csv, index = True)
     print(f'Saved new_df to {output_csv}')
+    # print(f'Reminder: df was not saved!')
 
-    # Output a csv of unparsed addresses (for entries with full_address)
-    conds = [
-            (~df['full_address'].isna()),               # full_address is not blank
+    ### Create df of incorrectly parsed addresses (for entries with full_address)
+    street_no_conds = [
+            (df['full_address'].str.contains(r'\d')),   # full_address contains a digit
             (df['street_no'].isna()),                   # street_no is blank
             (df['LP_street_no'].isna()),                # LP_street_no is blank
             (df['LP2_street_no'].isna()),               # LP2_street_no is blank
-            (df['full_address'].str.contains(r'\d')),   # full_address contains a digit
             ]
-    idxs = True
-    for i in conds:
-        idxs = idxs & i
+    usa_postcode_err = df['LP_PostCode'].str.fullmatch(r'\d+', na = False)
+    dashes_with_spaces = df['full_address'].str.contains(r'\s+-\s?|\s?-\s+', na = False)
+    street_no_blank = True
+    for i in street_no_conds:
+        street_no_blank = street_no_blank & i
+    idxs = street_no_blank | usa_postcode_err | dashes_with_spaces
     unparsed_df = df.loc[idxs].copy()
-    unparsed_df.to_csv(unparsed_addrs_path, index = True)
-    print(f'Saved unparsed_df to {unparsed_addrs_path}')
+    unparsed_df['parsing_err'] = ''
+    unparsed_df.loc[street_no_blank, 'parsing_err'] = unparsed_df.loc[street_no_blank, 'parsing_err'] + 'street_no_blank,'
+    unparsed_df.loc[usa_postcode_err, 'parsing_err'] = unparsed_df.loc[usa_postcode_err, 'parsing_err'] + 'usa_postcode_err,'
+    unparsed_df.loc[dashes_with_spaces, 'parsing_err'] = unparsed_df.loc[dashes_with_spaces, 'parsing_err'] + 'dashes_with_spaces,'
+
+    # unparsed_df.to_csv(unparsed_addrs_path, index = True)
+    # print(f'Saved unparsed_df to {unparsed_addrs_path}')
+    print(f'There are {unparsed_df.shape[0]} rows of incorrectly parsed addresses')
+
+
+    ### Unit starts with letter
+    re_pat = r'^[\dA-z#0-9]*\s*-\s*[\dA-z#0-9]*'
+    
 
     print('')
 
