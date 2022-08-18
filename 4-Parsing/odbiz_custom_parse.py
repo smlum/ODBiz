@@ -1,6 +1,7 @@
 import pandas as pd 
 from tqdm import tqdm
 import numpy as np
+from parse_csv import parsing_df_wrapper
 
 def duplicate_dashes(df: pd.DataFrame) -> pd.DataFrame:
     '''
@@ -154,6 +155,73 @@ def detect_unit_starts_non_digit(df: pd.DataFrame, regex_search: str) -> pd.Inde
     unit_starts_non_digit = df['full_address'].str.contains(regex_search, na = False)
     return unit_starts_non_digit
 
+def fix_postcode_errs(parsing_errs_df: pd.DataFrame, usa_postcode_err: pd.Series, postal_code_csv: str) -> pd.DataFrame:
+    '''
+    Fixes postal code errors
+
+    Side Effects:
+        - Outputs usa_postcode_err_df as a csv
+    '''
+    # For these entries, LP parsed the street no as a postal code, and the unit no as a street no. 
+    # This block of code maps the values to their proper column
+    usa_postcode_err_df = parsing_errs_df.loc[usa_postcode_err].copy()
+    usa_postcode_err_df['LP2_unit'] = usa_postcode_err_df['LP2_street_no']
+    usa_postcode_err_df['LP2_street_no'] = usa_postcode_err_df['LP_PostCode']
+    usa_postcode_err_df['LP_PostCode'] = np.nan
+
+    # Save to csv
+    save_df_to_csv(usa_postcode_err_df, postal_code_csv, index = True)
+
+    return usa_postcode_err_df
+
+def extract_parsing_errs(df: pd.DataFrame, err_idxs_dict: dict, main_df_output_path: str, parsing_errs_output_path: str) -> pd.DataFrame:
+    '''
+    Extracts all the entries with parsing errors from the main df by applying inclusive OR to 
+    all Index objects stored in err_idxs_dict. 
+
+    Side Effects:
+        - Adds 2 columns to df, a boolean that indicates whether the entry has a parsing error 
+        and a column with a brief description of the errors
+        - Saves two dfs to file, the main df and the extraction of all detected parsing errors
+
+    Arguments:
+        - df: The main dataframe
+        - err_idxs_dict: A dictionary of pandas Index of boolean values to indicate which entries have 
+        a parsing error
+        - main_df_output_path: File path to save the main df
+        - parsing_errs_output_path: File path to save the parsing errors df
+
+    Returns:
+        - parsing_errs_df: A dataframe of the extracted entries with parsing errors
+    '''
+    
+    
+    # Extract the indicies of all entries with detected parsing errors
+    err_idxs = False
+    for v in err_idxs_dict.values():
+        err_idxs = err_idxs | v
+
+    parsing_errs_df = df.loc[err_idxs].copy()
+
+    # Check for already parsed data from source and remove them
+    source_parsed = (parsing_errs_df['street_no'].notnull()) & (parsing_errs_df['street_name'].isnull())#.astype('boolean')
+    parsing_errs_df = parsing_errs_df[~source_parsed]
+    df['parsing_err_exists'] = False
+    df.loc[parsing_errs_df.index, 'parsing_err_exists'] = True
+
+    # Add descriptions of the parsing error
+    parsing_errs_df['parsing_err'] = ''
+    for k, v in err_idxs_dict.items():
+        parsing_errs_df.loc[v, 'parsing_err'] = parsing_errs_df.loc[v, 'parsing_err'] + (k + ',')
+
+    print(f'There are {parsing_errs_df.shape[0]} rows of incorrectly parsed addresses')
+
+    # Save the dfs to csv
+    save_df_to_csv(parsing_errs_df, parsing_errs_output_path, index = True)
+    save_df_to_csv(df, main_df_output_path, index = True)
+
+
+    return parsing_errs_df
 
 def main():
     # Define filepaths
@@ -169,7 +237,7 @@ def main():
     output_csv = '/home/jovyan/ODBiz/4-Parsing/output/2-parsed_biz.csv'
     
     # Load the csv
-    total_lines = 803658
+    total_lines = 803584
     chunksize = 10000
     df = pd.concat([chunk for chunk in tqdm(pd.read_csv(input_csv,
                                             chunksize=chunksize, 
@@ -230,81 +298,19 @@ def main():
                     'has_dash_and_1st_col_max': has_dash_and_1st_col_max,
                     'unit_starts_non_digit': unit_starts_non_digit
     }
-
-    def extract_parsing_errs(df: pd.DataFrame, err_idxs_dict: dict, main_df_output_path: str, parsing_errs_output_path: str) -> pd.DataFrame:
-        '''
-        Extracts all the entries with parsing errors from the main df by applying inclusive OR to 
-        all Index objects stored in err_idxs_dict. 
-
-        Side Effects:
-            - Adds 2 columns to df, a boolean that indicates whether the entry has a parsing error 
-            and a column with a brief description of the errors
-            - Saves two dfs to file, the main df and the extraction of all detected parsing errors
-
-        Arguments:
-            - df: The main dataframe
-            - err_idxs_dict: A dictionary of pandas Index of boolean values to indicate which entries have 
-            a parsing error
-            - main_df_output_path: File path to save the main df
-            - parsing_errs_output_path: File path to save the parsing errors df
-
-        Returns:
-            - parsing_errs_df: A dataframe of the extracted entries with parsing errors
-        '''
-
-        
-        # Extract the indicies of all entries with detected parsing errors
-        err_idxs = False
-        for v in err_idxs_dict.values():
-            err_idxs = err_idxs | v
-
-        df['parsing_err_exists'] = err_idxs
-        parsing_errs_df = df.loc[err_idxs].copy()
-
-        parsing_errs_df['parsing_err'] = ''
-        for k, v in err_idxs_dict.items():
-            parsing_errs_df.loc[v, 'parsing_err'] = parsing_errs_df.loc[v, 'parsing_err'] + (k + ',')
-
-        print(f'There are {parsing_errs_df.shape[0]} rows of incorrectly parsed addresses')
-
-        save_df_to_csv(parsing_errs_df, parsing_errs_output_path, index = True)
-        save_df_to_csv(df, main_df_output_path, index = True)
-
-
-        return parsing_errs_df
     parsing_errs_df = extract_parsing_errs(df, err_idxs_dict, main_df_output_path, parsing_errs_output_path)
 
-    # idxs = street_no_blank | usa_postcode_err | dashes_with_spaces | has_dash_and_1st_col_max | unit_starts_non_digit
-    # parsing_errs_df = df.loc[idxs].copy()
-
-    # # Create a column to describe the parsing error(s)
-    # parsing_errs_df['parsing_err'] = ''
-    # parsing_errs_df.loc[street_no_blank, 'parsing_err'] = parsing_errs_df.loc[street_no_blank, 'parsing_err'] + 'street_no_blank,'
-    # parsing_errs_df.loc[usa_postcode_err, 'parsing_err'] = parsing_errs_df.loc[usa_postcode_err, 'parsing_err'] + 'usa_postcode_err,'
-    # parsing_errs_df.loc[dashes_with_spaces, 'parsing_err'] = parsing_errs_df.loc[dashes_with_spaces, 'parsing_err'] + 'dashes_with_spaces,'
-    # parsing_errs_df.loc[has_dash_and_1st_col_max, 'parsing_err'] = parsing_errs_df.loc[has_dash_and_1st_col_max, 'parsing_err'] + 'has_dash_and_1st_col_max,'
-    # parsing_errs_df.loc[unit_starts_non_digit, 'parsing_err'] = parsing_errs_df.loc[unit_starts_non_digit, 'parsing_err'] + 'unit_starts_non_digit,'
-    # print(f'There are {parsing_errs_df.shape[0]} rows of incorrectly parsed addresses')
-
-
-    ### Fix postal code errors
-    # For these entries, LP parsed the street no as a postal code, and the unit no as a street no. 
-    # This block of code maps the values to their proper column
-    usa_postcode_err_df = parsing_errs_df.loc[usa_postcode_err].copy()
-    usa_postcode_err_df['LP2_unit'] = usa_postcode_err_df['LP2_street_no']
-    usa_postcode_err_df['LP2_street_no'] = usa_postcode_err_df['LP_PostCode']
-    usa_postcode_err_df['LP_PostCode'] = np.nan
+    # Fix usa postal code error
+    usa_postcode_err_df = fix_postcode_errs(parsing_errs_df, usa_postcode_err, postal_code_csv)
     print('Updating the big parsed csv with postal code error correction...')
     df.update(usa_postcode_err_df)    
     parsing_errs_df.update(usa_postcode_err_df)    
-
-    usa_postcode_err_df.to_csv(postal_code_csv, index = True)
-    print(f'Saved new_df to {postal_code_csv}')
 
     ### Drop addresses that I know are parsed from the parsing_errs_df
     fixed_conds = [
                 parsing_errs_df['parsing_err'] == 'usa_postcode_err,', # Only postal codes caused the error
                 parsing_errs_df['localfile'] == 'BC_Victoria_Business_Licences.csv', # Victoria was determined to be fully parsed 
+                unit_starts_non_digit & (~parsing_errs_df['LP2_unit'].isna()), # New iteration of parse_csv fixed most of the units starting with non-digits
                 ]
     drop_rows = False 
     for i in fixed_conds:
@@ -312,9 +318,11 @@ def main():
     drop_idxs = parsing_errs_df[drop_rows].index
     parsing_errs_df = parsing_errs_df.drop(index = drop_idxs)
 
-
-    # parsing_errs_df.loc[usa_postcode_err, ['full_address', 'LP2_unit', 'LP2_street_no', 'LP_PostCode', 'parsing_err']]
-
+    # ### Run the parsing_errs_df through libpostal again and see what happens
+    # parsing_errs_df_b4 = parsing_errs_df.copy()
+    # save_df_to_csv(parsing_errs_df_b4, '/home/jovyan/ODBiz/4-Parsing/custom_parsing_data/parsing_errs_b4_LP2.csv')
+    # parsing_errs_df = parsing_df_wrapper(parsing_errs_df, 'full_address')
+    # save_df_to_csv(parsing_errs_df, '/home/jovyan/ODBiz/4-Parsing/custom_parsing_data/parsing_errs_after_LP2.csv')
 
     ### Unit starts with letter
     re_mapping = {
@@ -325,11 +333,8 @@ def main():
     parsing_errs_df[['regex_g1', 'regex_g2']] = temp.rename(columns = re_mapping)
     for i in re_mapping.values():
         parsing_errs_df[i] = parsing_errs_df[i].str.lower()
-    parsing_errs_df.to_csv(unparsed_addrs_path, index = True)
-    print(f'Saved parsing_errs_df to {unparsed_addrs_path}')
-    print('')
-
-    
+    save_df_to_csv(parsing_errs_df, parsing_errs_output_path, index = True)
+  
     # Save the main csv
     df.to_csv(output_csv, index = True)
     print(f'Saved new_df to {output_csv}')
