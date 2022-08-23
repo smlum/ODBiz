@@ -167,7 +167,7 @@ def detect_blank_street_names(df: pd.DataFrame, OUT_OF_TOWN_VARS_LIST: list) -> 
     blank_street_names = new_df['full_address'].notnull() & new_df['LP_street_name'].isnull() & ~(new_df['LP_street_name'].isin(OUT_OF_TOWN_VARS_LIST))
     return blank_street_names
 
-def fix_postcode_errs(parsing_errs_df: pd.DataFrame, usa_postcode_err: pd.Series, postal_code_csv: str) -> pd.DataFrame:
+def fix_postcode_errs(parsing_errs_df: pd.DataFrame, usa_postcode_err: pd.Series, postal_code_csv: str = None) -> pd.DataFrame:
     '''
     Fixes postal code errors
 
@@ -182,7 +182,8 @@ def fix_postcode_errs(parsing_errs_df: pd.DataFrame, usa_postcode_err: pd.Series
     usa_postcode_err_df['LP_PostCode'] = np.nan
 
     # Save to csv
-    save_df_to_csv(usa_postcode_err_df, postal_code_csv, index = True)
+    if postal_code_csv is not None:
+        save_df_to_csv(usa_postcode_err_df, postal_code_csv, index = True)
 
     return usa_postcode_err_df
 
@@ -237,18 +238,20 @@ def extract_parsing_errs(df: pd.DataFrame, err_idxs_dict: dict, OUT_OF_TOWN_VARS
 
     return parsing_errs_df
 
-def fix_dashes_with_spaces(parsing_errs_df: pd.DataFrame, err_id_str: str, dashes_with_spaces_path: str, ORDINAL_NUMBER_DETECTION: str) -> pd.DataFrame:
+def fix_dashes_with_spaces(parsing_errs_df: pd.DataFrame, err_id_str: str, dashes_with_spaces_path: str, ORDINAL_NUMBER_DETECTION: str, CAD_POSTCODE_FORMAT: str) -> pd.DataFrame:
     '''
-    Fixes postal code errors
+    Fixes entries where spaces adjacent to dashes causes parsing errors
 
     Side Effects:
-        - Outputs usa_postcode_err_df as a csv
+        - Calls fix_postcode_errs()
     '''
+
+    DEBUG_COLS = ['full_address', 'LP2_unit', 'LP2_street_no', 'LP_street_name']
 
     # Remove whitespaces, then feed through libpostal again
     dashes_with_spaces_df = parsing_errs_df[parsing_errs_df['parsing_err'] == 'dashes_with_spaces,'].copy()
     full_address_alt = 'full_address_alt'
-    dashes_with_spaces_df[full_address_alt] = dashes_with_spaces_df['full_address'].str.replace(r'\s*-\s*', '-', regex = True)
+    dashes_with_spaces_df[full_address_alt] = dashes_with_spaces_df['full_address'].str.replace(r'\s*-\s*', '-', regex = True, n = 1)
     dashes_with_spaces_df = parsing_df_wrapper(dashes_with_spaces_df, full_address_alt)
 
     # Mark everything as parsed, then mark detected anomolies as not parsed
@@ -261,11 +264,21 @@ def fix_dashes_with_spaces(parsing_errs_df: pd.DataFrame, err_id_str: str, dashe
         dashes_with_spaces_df['LP2_street_no'] == '1',
         dashes_with_spaces_df['LP2_street_no'] == '10',
         dashes_with_spaces_df['full_address'].str.contains(r'\d\s*(?:avenue|street)', case = False, regex = True) & ~(dashes_with_spaces_df['full_address'].str.contains(ORDINAL_NUMBER_DETECTION, case = False, regex = True)),
+        dashes_with_spaces_df['full_address'].str.contains(r'^[A-z]{2,}', case = False, regex = True),
     ]
     parsing_err_idxs = False
     for i in dws_parsing_errs:
         parsing_err_idxs = parsing_err_idxs | i
     dashes_with_spaces_df.loc[~parsing_err_idxs, 'parsing_err_exists'] = False
+
+    # Sometimes, the original parsing was better than without the space
+    df2 = dashes_with_spaces_df.loc[dashes_with_spaces_df['parsing_err_exists']].copy()
+    df2 = parsing_df_wrapper(df2, 'full_address')
+    dashes_with_spaces_df.update(df2)
+
+    # Fix the new postal code errors that pop up
+    usa_postcode_err = dashes_with_spaces_df['LP_PostCode'].str.fullmatch(r'\d+', na = False)
+    usa_postcode_err = fix_postcode_errs(dashes_with_spaces_df, usa_postcode_err)
 
     return dashes_with_spaces_df
 
@@ -292,6 +305,7 @@ def main():
     ]
     ORDINAL_NUMBER_DETECTION = r'1st |2nd |3rd |\dth '
     DEBUG_COLS = ['full_address', 'LP2_unit', 'LP2_street_no', 'LP_street_name']
+    CAD_POSTCODE_FORMAT = r'[A-z]\d[A-z]\s*\d[A-z]\d'
 
     # Load the csv
     total_lines = 803584
@@ -303,7 +317,7 @@ def main():
                                         total=total_lines//chunksize+1)
                     ])
     # df = pd.read_csv(input_csv, dtype=str)
-    df = df.set_index('idx')
+    df = df.set_index('idx') # This line of code is causing the code to halt without error messages. But it is necessary for the rest of the program :(
     num_of_rows = df.shape[0]
     print(f'Successfully loaded {input_csv_path}')
     print(f'df has {num_of_rows} rows')
@@ -371,7 +385,7 @@ def main():
 
     # Fix dashes with space error
     # parsing_errs_df['parsing_err'] == 'dashes_with_spaces,'
-    dashes_with_spaces_df = fix_dashes_with_spaces(parsing_errs_df, 'dashes_with_spaces,', dashes_with_spaces_path, ORDINAL_NUMBER_DETECTION)
+    dashes_with_spaces_df = fix_dashes_with_spaces(parsing_errs_df, 'dashes_with_spaces,', dashes_with_spaces_path, ORDINAL_NUMBER_DETECTION, CAD_POSTCODE_FORMAT)
     df.update(dashes_with_spaces_df)    
     parsing_errs_df.update(dashes_with_spaces_df)   
 
@@ -380,7 +394,8 @@ def main():
     fixed_conds = [
                 parsing_errs_df['parsing_err'] == 'usa_postcode_err,', # Only postal codes caused the error
                 parsing_errs_df['localfile'] == 'BC_Victoria_Business_Licences.csv', # Victoria was determined to be fully parsed 
-                unit_starts_non_digit & (~parsing_errs_df['LP2_unit'].isna()) & (~(parsing_errs_df['LP2_street_no'].str.contains(r'\D', na = False))), # New iteration of parse_csv fixed most of the units starting with non-digits
+                unit_starts_non_digit & (~parsing_errs_df['LP2_unit'].isna()) & (~(parsing_errs_df['LP2_street_no'].str.contains(r'[\D\s]', na = False))), # New iteration of parse_csv fixed most of the units starting with non-digits
+                parsing_errs_df['LP_street_name'].str.contains(r'^\d*\s(?:st$|street$|ave)', na = False, regex = True), # if the street name is "num avenue" or "num street" formatted in a particular way, these ones were parsed correctly
                 ]
     fixed_conds_idxs = False 
     for i in fixed_conds:
@@ -389,9 +404,12 @@ def main():
     parsed_idxs = parsing_errs_df[fixed_conds_idxs].index
     # parsing_errs_df = parsing_errs_df.drop(index = parsed_idxs)
     parsing_errs_df.loc[parsed_idxs, 'parsing_err_exists'] = False
+    print(f'Total    {parsing_errs_df.shape[0]}')
     print('parsing_errs_df[parsing_err_exists].value_counts():')
-    print(parsing_errs_df['parsing_err_exists'].value_counts())
-    print('Remaining parsing required:')
+    parsing_val_counts = parsing_errs_df['parsing_err_exists'].value_counts()
+    print(parsing_val_counts)
+    print(f'Success percentage = {np.floor(100 * parsing_val_counts[False] / parsing_errs_df.shape[0])} %')
+    print('Remaining parsing required (breakdown):')
     print(parsing_errs_df.loc[parsing_errs_df['parsing_err_exists'],'parsing_err'].value_counts())
 
     ### Unit starts with letter
