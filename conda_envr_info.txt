@@ -1,0 +1,9 @@
+conda create -n odbiz python=3.8
+source ~/.bashrc
+conda activate odbiz
+conda install numpy pandas matplotlib geopandas folium requests ipykernel tqdm postal -y
+pip install opentabulate
+
+conda info --envs
+
+# ODHF(?) only packages: seaborn, shapely, pyrosm
