@@ -1,7 +1,7 @@
 conda create -n odbiz python=3.8
 source ~/.bashrc
 conda activate odbiz
-conda install numpy pandas matplotlib geopandas folium requests ipykernel tqdm postal -y
+conda install numpy pandas matplotlib geopandas folium requests ipykernel tqdm postal thefuzz unidecode -y
 pip install opentabulate
 
 conda info --envs
