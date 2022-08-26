@@ -6,4 +6,5 @@ pip install opentabulate
 
 conda info --envs
 
+# This Python interpreter will be located at /opt/conda/envs/odbiz/bin/python3
 # ODHF(?) only packages: seaborn, shapely, pyrosm
