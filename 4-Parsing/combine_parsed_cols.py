@@ -68,6 +68,7 @@ def main():
                                         'primary_NAICS',
                                         'secondary_NAICS',
                                         'NAICS_descr',
+                                        'NAICS_descr2',
                                         'alt_econ_act_code',
                                         'alt_econ_act_descrip',
                                         'latitude',
@@ -99,19 +100,19 @@ def main():
                                         'status',
                                         'provider',
                                         'geo_source',
-                                        'LP_street_no', #
-                                        'LP_street_name',#
-                                        'LP_City', #
-                                        'LP_Province', #
-                                        'LP_PostCode', #
-                                        'LP_Unit', #
-                                        'LP_street_no_alt', #
-                                        'LP2_unit', #
-                                        'LP2_street_no', #
-                                        'spill', #
-                                        'LP3_unit', #
-                                        'parsing_err_exists', #
-                                        'flagged_parsing_err' #
+                                        # 'LP_street_no', #
+                                        # 'LP_street_name',#
+                                        # 'LP_City', #
+                                        # 'LP_Province', #
+                                        # 'LP_PostCode', #
+                                        # 'LP_Unit', #
+                                        # 'LP_street_no_alt', #
+                                        # 'LP2_unit', #
+                                        # 'LP2_street_no', #
+                                        # 'spill', #
+                                        # 'LP3_unit', #
+                                        # 'parsing_err_exists', #
+                                        # 'flagged_parsing_err' #
                                         ]
 
     # Print out unexpected missing columns
@@ -135,20 +136,11 @@ def main():
     df['full_address'] = df['full_address'].fillna(df['temporary'])
     df = df.drop(['temporary'], axis=1)
 
-
-    # #Create unique identifiers for each datapoint
-    # df['temp']=make_temp_col(df)
-    # df['idx']=df['temp'].apply(GetHash)
-
-    # #Any indexes that are the same basically mean that the data points are the same, which is why we drop duplicates
-    # df = df.drop_duplicates(subset=['idx'])
-    # df = df.drop(['temp'], axis=1)
-    # df.insert(0, 'idx', df.pop('idx'))
-
     # Save to csv and copy over to geocoding
     df.to_csv(f_out, index=False)
+    print(f'File saved to {f_out}')
     shutil.copyfile(f_out, f_to_geocode)
-    # df.to_csv('../5-Geocoding/combined.csv', index=False)
+    print(f'Above file copied to {f_to_geocode}')
 
     print(df['idx'].value_counts())
 
