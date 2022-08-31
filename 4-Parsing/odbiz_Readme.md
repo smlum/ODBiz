@@ -16,8 +16,35 @@ To run this script, go into terminal and enter: `python parse_csv.py input/ODBiz
 ## 2. odbiz_custom_parse.py
 In the `LP_street_no` column, some entries have multiple number and letter values that are seperated by multiple dashes (4-flr-777, for example). This script handles most of these odd cases.
 
-There are also other various parsing errors that the first script produces for the odbiz dataset that this script attempts to fix as much as possible. 
+There are also other various parsing errors that the first script produces for the odbiz dataset that this script attempts to fix as much as possible. Read `parsing_errors_documentation.md` for more details about the errors that were discovered in this step.
 
 ## 3. combine_parsed_cols.py
 This script's purpose is to merge columns together. As mentionned previously, some adresses were already split from data collection, so there are already some values in the columns street_no, street_name, etc. This script simply fills NAN values in these columns with values from LP2_street_no, LP_street_name, etc. 
+
+## Dropped rows
+The scripts above will drop entries if they meet certain conditions that we deem as being irrelevant given the scope of this project:
+
+### `parse_csv.py`
+This script doesn't drop any rows.
+
+### `odbiz_custom_parse.py`
+If the column `full_address` was a full match with one of the following strings:
+```
+[
+'-',                                  
+'BUSINESS - OUT OF TOWN SQUAMISH',    
+'BUSINESS - OUT OF TOWN',             
+'NON-RESIDENT',                       
+'BUSINESS-NON RESIDENT'     
+]
+```
+
+then the entry was removed.
+
+### `combine_parsed_cols.py`
+This script doesn't drop any rows.
+
+
+
+
 
