@@ -52,5 +52,5 @@ This script checks the following columns:
 If ALL of the above columns are blank/NA, then the row is removed. 
 
 ### `fix_NAICS_codes`
-This script doesn't drop any rows
+This script doesn't drop any rows.
 
