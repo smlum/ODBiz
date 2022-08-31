@@ -167,7 +167,6 @@ def main():
 
     # Standardize province names
     print('Standardizing Province Names...')
-
     provs_dict={
                 'Province of Alberta': 'AB',
                 'Province of British Columbia': 'BC',
