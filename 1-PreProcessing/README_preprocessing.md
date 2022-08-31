@@ -1,8 +1,8 @@
 # 1-PreProcessing
 The purpose of this step is to do some basic data cleaning, especially if certain datasets are especially troublesome for the rest of our pipeline to deal with.
 
-## `preprocessing.ipynb`
-Hitting "Run all" on this Jupyter notebook will run all the necessary scripts in the correct order. A lot of the documentation was already written in the file `preprocessing.ipynb`, so it will not be repeated here.
+## `preprocessing_main.ipynb`
+Hitting "Run all" on this Jupyter notebook will run all the necessary scripts in the correct order. A lot of the documentation was already written in the file `preprocessing_main.ipynb`, so it will not be repeated here.
 
 ## `ODBizSources.csv`
 The file `ODBizSources.csv` stores metadata about our source files, including links to the original sources. Our source files are stored in `/home/jovyan/ODBiz/1-PreProcessing/raw`.

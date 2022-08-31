@@ -11,12 +11,12 @@ The first step is creating a variable map (variablemap.csv). This is quite simpl
 
 ---
 
-## 1-openTabulate.ipynb ##
+## openTabulate_main.ipynb ##
 Hitting "Run all" on this Jupyter notebook will run all the necessary commands in the correct order as explained below
 
 ## JSON Generator ##
 
-Run the first code block cell in `1-openTabulate.ipynb` to create the JSONs necessary to run opentabulate. This code block converts the `variablemap.csv` into several JSON files (one for each dataset) that opentabulate uses to perform the column mappings.
+Run the first code block cell in `openTabulate_main.ipynb` to create the JSONs necessary to run opentabulate. This code block converts the `variablemap.csv` into several JSON files (one for each dataset) that opentabulate uses to perform the column mappings.
 
 ## Opentabulate ##
 
