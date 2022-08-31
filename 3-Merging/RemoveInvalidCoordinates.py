@@ -1,10 +1,10 @@
-import pandas as pd
 '''
 RemoveInvalidCoordinates.py
 
 Sets invalid coordinates to nan
 '''
 
+import pandas as pd
 import numpy as np
 from tqdm import tqdm
 from pytz import timezone
