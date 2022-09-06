@@ -1,10 +1,10 @@
 conda create -n odbiz python=3.8
 source ~/.bashrc
 conda activate odbiz
-conda install numpy pandas matplotlib geopandas folium requests ipykernel tqdm postal thefuzz unidecode -y
+conda install numpy pandas matplotlib geopandas folium requests ipykernel tqdm postal thefuzz unidecode openpyxl -y
 pip install opentabulate
 
 conda info --envs
 
-# This Python interpreter will be located at /opt/conda/envs/odbiz/bin/python3
+# Note: This Python interpreter will be located at /opt/conda/envs/odbiz/bin/python3
 # ODHF(?) only packages: seaborn, shapely, pyrosm
