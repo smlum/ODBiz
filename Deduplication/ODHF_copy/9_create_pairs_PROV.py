@@ -1,0 +1,201 @@
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
+import json
+import pandas as pd
+import re
+from rl_helper import strip_accents, AddressClean, haversine
+import recordlinkage as rl
+from recordlinkage.preprocessing import clean
+import numpy as np
+import math
+
+'''
+Read in source file, data file, and rename data file columns
+'''
+sourcefile = "/home/jovyan/data-vol-1/ODHF/LODE-ECDO/scripts/HealthFacilities/V2/7-Deduplication/inputs/deduplicated_CIHI.json"
+with open(sourcefile) as source_f:
+    Source = json.load(source_f)
+    
+
+df = pd.read_csv(Source["filename"],
+               encoding=Source["encoding"],
+               index_col=Source["index"])
+
+print('I. Preprocessing - renaming columns, removing accents, and making string replacements.')
+
+# reduce database to only the columns we use for comparisons
+df = df[Source["column_map"].values()]
+column_map = {val: key for key, val in Source["column_map"].items()}
+df = df.rename(columns = column_map)
+
+# remove accents
+
+text_cols = ['Name','Address','StreetName','City']
+
+for col in text_cols:
+    df.loc[~df[col].isnull(),col]=df.loc[~df[col].isnull(),col].apply(strip_accents)
+    
+#make names and addresses lowercase
+df['Name'] = df['Name'].apply(str)
+df['Name'] = df['Name'].str.lower()
+
+df['Address'] = df['Address'].apply(str)
+df['Address'] = df['Address'].str.lower()
+
+df['StreetName'] = df['StreetName'].apply(str)
+df['StreetName'] = df['StreetName'].str.lower()
+
+#apply text swaps in the Name column    
+for swap in Source["text_map"]:
+    start = r'\b'+re.escape(swap[0])+r'\b'
+    df["Name"] = df["Name"].str.replace(start,swap[1], regex=True)
+
+
+
+
+#standardise addresses using "AddressClean" function in the rl_helper module
+
+df.loc[(~df['StreetName'].isnull()) & (df.Province != 'qc'), 'StreetName'] = df.loc[(~df['StreetName'].isnull()) & (df.Province != 'qc'), 'StreetName'].apply(AddressClean, args = ('en',))
+df.loc[(~df['StreetName'].isnull()) & (df.Province == 'qc'), 'StreetName'] = df.loc[(~df['StreetName'].isnull()) & (df.Province == 'qc'), 'StreetName'].apply(AddressClean, args = ('fr',))
+
+df.loc[(~df['Address'].isnull()) & (df.Province != 'qc'), 'Address'] = df.loc[(~df['Address'].isnull()) & (df.Province != 'qc'), 'Address'].apply(AddressClean, args = ('en',))
+df.loc[(~df['Address'].isnull()) & (df.Province == 'qc'), 'Address'] = df.loc[(~df['Address'].isnull()) & (df.Province == 'qc'), 'Address'].apply(AddressClean, args = ('fr',))
+
+#remove periods, apostrophes, commas, and hypens in the Name and address columns
+
+r_list = [r".", r",", r"'", r"-"]
+
+for r in r_list:
+
+    df["Name"] = df["Name"].str.replace(r, ' ', regex=False)
+    df["Address"] = df["Address"].str.replace(r, ' ', regex=False)
+
+#remove excess whitespace
+df["Name"] = df["Name"].str.replace(r" +", " ", regex=True)
+df["Address"] = df["Address"].str.replace(r" +", " ", regex=True)
+
+#standardise postal codes - just remove empty space and make sure it's all lower case
+
+df.loc[~df.PostalCode.isnull(), 'PostalCode'] = df.loc[~df.PostalCode.isnull(), 'PostalCode'].str.replace(' ', '', regex=True).str.lower()
+
+#create an extra temporary Name column with an additional level of cleaning
+
+df['NameClean'] = clean(df["Name"])
+
+#Some records have street number and street name, but no address field filled
+
+df.loc[(df.Address.isnull())&\
+       (~df.StreetName.isnull()),'Address']\
+    =clean(df.loc[(df.Address.isnull())&\
+       (~df.StreetName.isnull()),'StreetNumber']+' '+\
+           df.loc[(df.Address.isnull())&\
+       (~df.StreetName.isnull()),'StreetName']+' '+\
+        df.loc[(df.Address.isnull())&\
+       (~df.StreetName.isnull()),'City'])
+
+#df.to_csv('test.csv')
+
+r"""
+II. Record Linkage
+
+
+This is the section that uses the record linkage package to determine candidate pairs,
+which will be evaluated separately.
+"""
+print('II. Record linkage - Now creating multiindex and performing comparisons')
+
+indexer = rl.Index()
+indexer.block('Province')
+candidate_links = indexer.index(df)
+
+print('Computing metrics for {} candidate pairs'.format(len(candidate_links)))
+
+# likely to be a lot of records to match, so split into chunks
+n = math.ceil(len(candidate_links) / 1E5)
+chunks = rl.index_split(candidate_links, n)
+
+# Comparison step
+results = []
+
+# n_jobs specifies number of cores for running in parallel
+compare = rl.Compare(n_jobs=4)
+
+compare.exact('StreetNumber', 'StreetNumber', label='StrNum_Match')
+compare.exact('PostalCode', 'PostalCode', label='PC_Match')
+compare.exact('FileName', 'FileName', label='File_Match')
+compare.exact('Type', 'Type', label='Type_Match')
+compare.string('Address', 'Address', method='damerau_levenshtein', label='Addr_DL')
+compare.string('Address', 'Address', method='cosine', label='Addr_CS')
+compare.string('Address', 'Address', method='damerau_levenshtein', label='StrName_DL')
+compare.string('Address', 'Address', method='cosine', label='StrName_CS')
+compare.string('City', 'City', method='damerau_levenshtein', label='City_DL')
+compare.string('Name', 'Name', method='damerau_levenshtein', label='Name_DL')
+compare.string('Name', 'Name', method='cosine', label='Name_CS')
+compare.string('Name', 'Name', method='qgram', label='Name_Q')
+compare.string("NameClean", "NameClean", method='damerau_levenshtein', label="CleanName_DL")
+
+
+i = 0
+for chunk in chunks:
+    i += 1
+    print('processing chunk {} of {}'.format(i,n))
+
+    features = compare.compute(chunk, df)
+
+    #reduce comparison matrix to entries where the name score is reasonably high
+
+    cutoff = 0.5
+    features = features.loc[features.Name_CS > cutoff]
+    results.append(features)
+f = pd.concat(results)
+print('Score cut-off of {} reduced candidate pairs to {}'.format(cutoff, len(f)))
+
+f['idx1'] = f.index.get_level_values(0)
+f['idx2'] = f.index.get_level_values(1)
+
+print('Merging on original dataframe and computing distance.')
+f=f.merge(df, left_on='idx1', how='left', right_on='idx')
+
+f=f.merge(df, left_on='idx2', how='left', right_on='idx', suffixes=('_1','_2'))
+
+#add Haversine distance to pairs
+
+f['Distance']=np.nan
+f[['Latitude_1', 'Latitude_2', 'Longitude_1', 'Longitude_2']] = f[['Latitude_1', 'Latitude_2', 'Longitude_1', 'Longitude_2']].astype(float)
+f.loc[(~f.Latitude_1.isnull())&(~f.Latitude_2.isnull()),'Distance']=f.loc[(~f.Latitude_1.isnull())&(~f.Latitude_2.isnull())].apply(lambda row: haversine(row), axis=1)
+
+f=f[['idx1',
+     'idx2',
+     'FileName_1',
+     'FileName_2',
+     'File_Match',
+     'Name_1',
+     'Name_2',
+     'Name_DL',
+     'Name_CS',
+     'Name_Q',
+     'CleanName_DL',
+     'Type_1',
+     'Type_2',
+     'Type_Match',
+     'Address_1',
+     'Address_2',
+     'Addr_DL',
+     'Addr_CS',
+     'StrNum_Match',
+     'StrName_DL',
+     'StrName_CS',
+     'PostalCode_1',
+     'PostalCode_2',
+     'PC_Match',
+     'City_1',
+     'City_2',
+     'City_DL',
+     'CSDUID_1',
+     'CSDUID_2',
+     'Distance']]
+
+
+
+f.to_csv('outputs/pairs_PROV.csv'.format(Source["output_name"]),index=False,encoding='cp1252')
