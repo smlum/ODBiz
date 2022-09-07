@@ -52,8 +52,11 @@ from recordlinkage.preprocessing import clean
 import numpy as np
 import math
 
+''' 
+
+
 '''
-Read in source file, data file, and rename data file columns
+#Read in source file, data file, and rename data file columns
 '''
 sourcefile = "/home/jovyan/ODBiz/Deduplication/ODHF_copy/inputs/Test_CSDs.json"
 with open(sourcefile) as source_f:
@@ -245,3 +248,4 @@ f.to_csv('outputs/pairs_PC.csv'.format(Source["output_name"]),index=False,encodi
 #f.loc[(~f.Distance.isnull())&(~f.Address_1.isnull())&(~f.Address_2.isnull())].to_csv('outputs/FullInfoPC.csv'.format(Source["output_name"]),index=False,encoding='cp1252')
 #f.loc[(f.Distance.isnull())|(f.Address_1.isnull())|(f.Address_2.isnull())].to_csv('outputs/PartialInfoPC.csv'.format(Source["output_name"]),index=False,encoding='cp1252')
 
+'''
