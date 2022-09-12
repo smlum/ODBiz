@@ -55,7 +55,7 @@ import math
 '''
 Read in source file, data file, and rename data file columns
 '''
-sourcefile = "/home/jovyan/ODBiz/Deduplication/ODHF_copy/inputs/Test_CSDs.json"
+sourcefile = "/home/jovyan/ODBiz/7-Deduplication/inputs/deduplicated_CSD.json"
 with open(sourcefile) as source_f:
     Source = json.load(source_f)
     
@@ -78,7 +78,7 @@ text_cols = ['Name','Address','StreetName','City']
 for col in text_cols:
     df.loc[~df[col].isnull(),col]=df.loc[~df[col].isnull(),col].apply(strip_accents)
     
-#make names lowercase
+#make names and addresses lowercase
 df['Name'] = df['Name'].apply(str)
 df['Name'] = df['Name'].str.lower()
 
@@ -87,12 +87,6 @@ df['Address'] = df['Address'].str.lower()
 
 df['StreetName'] = df['StreetName'].apply(str)
 df['StreetName'] = df['StreetName'].str.lower()
-
-#apply text swaps in the Name column    
-for swap in Source["text_map"]:
-    start = r'\b'+re.escape(swap[0])+r'\b'
-    df["Name"] = df["Name"].str.replace(start,swap[1], regex=True)
-
 
 
 
@@ -148,7 +142,7 @@ which will be evaluated separately.
 print('II. Record linkage - Now creating multiindex and performing comparisons')
 
 indexer = rl.Index()
-indexer.block('PostalCode')
+indexer.block('Province')
 candidate_links = indexer.index(df)
 
 print('Computing metrics for {} candidate pairs'.format(len(candidate_links)))
@@ -166,7 +160,6 @@ compare = rl.Compare(n_jobs=4)
 compare.exact('StreetNumber', 'StreetNumber', label='StrNum_Match')
 compare.exact('PostalCode', 'PostalCode', label='PC_Match')
 compare.exact('FileName', 'FileName', label='File_Match')
-compare.exact('Type', 'Type', label='Type_Match')
 compare.string('Address', 'Address', method='damerau_levenshtein', label='Addr_DL')
 compare.string('Address', 'Address', method='cosine', label='Addr_CS')
 compare.string('Address', 'Address', method='damerau_levenshtein', label='StrName_DL')
@@ -187,7 +180,7 @@ for chunk in chunks:
 
     #reduce comparison matrix to entries where the name score is reasonably high
 
-    cutoff = 0
+    cutoff = 0.5
     features = features.loc[features.Name_CS > cutoff]
     results.append(features)
 f = pd.concat(results)
@@ -218,9 +211,6 @@ f=f[['idx1',
      'Name_CS',
      'Name_Q',
      'CleanName_DL',
-     'Type_1',
-     'Type_2',
-     'Type_Match',
      'Address_1',
      'Address_2',
      'Addr_DL',
@@ -239,9 +229,5 @@ f=f[['idx1',
      'Distance']]
 
 
-f.to_csv('outputs/pairs_PC.csv'.format(Source["output_name"]),index=False,encoding='cp1252')
 
-#output pairs that have addresses and coordinates separately from those missing one or more addresses/coordinates
-#f.loc[(~f.Distance.isnull())&(~f.Address_1.isnull())&(~f.Address_2.isnull())].to_csv('outputs/FullInfoPC.csv'.format(Source["output_name"]),index=False,encoding='cp1252')
-#f.loc[(f.Distance.isnull())|(f.Address_1.isnull())|(f.Address_2.isnull())].to_csv('outputs/PartialInfoPC.csv'.format(Source["output_name"]),index=False,encoding='cp1252')
-
+f.to_csv('outputs/pairs_CIHI.csv'.format(Source["output_name"]),index=False,encoding='cp1252')
