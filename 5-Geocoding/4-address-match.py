@@ -87,11 +87,11 @@ for province_code in provinces:
     #read in openadress file
     # DF=pd.read_csv(input_dir+addresses)
     
-    
-    if (province_code == 'QC'):
-        ocd_file = "data/oda-addresses/ODA_" + province_code + "_v1_formatted.csv"
-    else:
-        ocd_file = "data/oda-addresses/ODA_" + province_code + "_v1.csv"
+    ocd_file = "data/oda-addresses/ODA_" + province_code + "_v1_formatted.csv"
+#     if (province_code == 'QC'):
+#         ocd_file = "data/oda-addresses/ODA_" + province_code + "_v1_formatted.csv"
+#     else:
+#         ocd_file = "data/oda-addresses/ODA_" + province_code + "_v1.csv"
 
     DF=pd.read_csv(ocd_file, low_memory=False)
     #drop any entries without a street number

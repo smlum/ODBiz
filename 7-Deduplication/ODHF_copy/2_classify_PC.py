@@ -29,7 +29,7 @@ clf.fit(X_train,Y_train)
 #read in main data set to fit
 DF = pd.read_csv("outputs/pairs_PC.csv", encoding='cp1252')
 X = DF.drop(columns=['idx1','idx2','Name_1','Name_2','Address_1','Address_2',
-            'City_1','City_2','PostalCode_1','PostalCode_2','FileName_1','FileName_2','Type_1','Type_2','CSDUID_1','CSDUID_2','File_Match','Type_Match'])
+            'City_1','City_2','PostalCode_1','PostalCode_2','FileName_1','FileName_2','CSDUID_1','CSDUID_2','File_Match'])
 
 # I'm normalizing distance using the highest distance in the training set, as opposed
 # to the full data - not sure what the best approach is
