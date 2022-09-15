@@ -1,4 +1,4 @@
-# this script is to applies formating to addresses
+# this script applies formating to our source addresses
 
 # The formatting functions apply three main processes to the input addresses. These are
 # * removing punctuation

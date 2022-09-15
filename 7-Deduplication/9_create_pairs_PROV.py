@@ -13,7 +13,7 @@ import math
 '''
 Read in source file, data file, and rename data file columns
 '''
-sourcefile = "/home/jovyan/data-vol-1/ODHF/LODE-ECDO/scripts/HealthFacilities/V2/7-Deduplication/inputs/deduplicated_CIHI.json"
+sourcefile = "/home/jovyan/ODBiz/7-Deduplication/inputs/deduplicated_CSD.json"
 with open(sourcefile) as source_f:
     Source = json.load(source_f)
     
@@ -46,10 +46,6 @@ df['Address'] = df['Address'].str.lower()
 df['StreetName'] = df['StreetName'].apply(str)
 df['StreetName'] = df['StreetName'].str.lower()
 
-#apply text swaps in the Name column    
-for swap in Source["text_map"]:
-    start = r'\b'+re.escape(swap[0])+r'\b'
-    df["Name"] = df["Name"].str.replace(start,swap[1], regex=True)
 
 
 
@@ -124,7 +120,6 @@ compare = rl.Compare(n_jobs=4)
 compare.exact('StreetNumber', 'StreetNumber', label='StrNum_Match')
 compare.exact('PostalCode', 'PostalCode', label='PC_Match')
 compare.exact('FileName', 'FileName', label='File_Match')
-compare.exact('Type', 'Type', label='Type_Match')
 compare.string('Address', 'Address', method='damerau_levenshtein', label='Addr_DL')
 compare.string('Address', 'Address', method='cosine', label='Addr_CS')
 compare.string('Address', 'Address', method='damerau_levenshtein', label='StrName_DL')
@@ -176,9 +171,6 @@ f=f[['idx1',
      'Name_CS',
      'Name_Q',
      'CleanName_DL',
-     'Type_1',
-     'Type_2',
-     'Type_Match',
      'Address_1',
      'Address_2',
      'Addr_DL',

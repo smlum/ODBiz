@@ -1,9 +1,12 @@
+
+#not used in test run because CIHI didn't exist 
+
 import pandas as pd
 
-df = pd.read_csv('outputs/pairs_CIHI.csv')
+df = pd.read_csv('outputs/pairs_CIHI.csv', low_memory=False)
 final = pd.read_csv("inputs/deduplicated_CSD.csv", low_memory=False)
 
-
+''' 
 # CIHI_healthcare_facilities.csv
 
 df = df[(df['FileName_1']  == "CIHI_healthcare_facilities.csv") | (df['FileName_2']  == "CIHI_healthcare_facilities.csv" )]
@@ -33,7 +36,7 @@ def hierarchy(id1, id2):
  #       return "Item not found."
 
 df["to_remove"] = df.apply(lambda x: hierarchy( id1 = x.idx1, id2 = x.idx2), axis = 1)
-
+'''
 
 
 
@@ -108,7 +111,7 @@ df_false = df.loc[false_rows]
 df_true.to_csv('outputs/duplicates_CIHI.csv', index=False)
 df_false.to_csv('outputs/NOT_duplicates_CIHI.csv', index=False)
 
-hashes = df_true['to_remove'].tolist()
+hashes = df_true #['to_remove'].tolist()
 
 final = final[~final['idx'].isin(hashes)]
 final.to_csv('deduplicated_CIHI.csv', index=False)

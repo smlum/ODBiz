@@ -13,7 +13,8 @@ for province_code in provinces:
     ocd_file = "data/oda-addresses/ODA_" + province_code + "_v1.csv"
     df = pd.read_csv(ocd_file, low_memory=False)
     if (province_code == 'QC'):
-        df = AddressClean_fr(df,'street','street')
+        # I should change this 
+        df = AddressClean_fr(df,'street','street')``
     else:
         df = AddressClean_en(df,'street','street')
     output_file_name = "data/oda-addresses/ODA_" + province_code + "_v1_formatted.csv"

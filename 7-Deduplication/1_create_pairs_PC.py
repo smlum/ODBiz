@@ -59,7 +59,7 @@ import math
 
 
 
-sourcefile = '/home/jovyan/ODBiz/7-Deduplication/inputs/1NAICS_Test.json'
+sourcefile = '/home/jovyan/ODBiz/7-Deduplication/inputs/4NAICS_Test.json'
 with open(sourcefile) as source_f:
     Source = json.load(source_f)
     
@@ -79,6 +79,7 @@ print('I. Preprocessing - renaming columns, removing accents, and making string 
 df = df[Source["column_map"].values()]
 column_map = {val: key for key, val in Source["column_map"].items()}
 df = df.rename(columns = column_map)
+
 
 # remove accents
 
