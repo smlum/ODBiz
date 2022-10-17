@@ -2,7 +2,7 @@
 import geocoder
 import pandas as pd
 import time
-key=''
+key='AsTU64fCN1w1cZJvCWI_n5FMqzSJUHQfjvfciEEBY5vky0MvVDRn12GZbEmmq1mz'
 def geocode(query,city,province,postal):
 	time.sleep(0.2) #to avoid throttling issues
 #	print(query)

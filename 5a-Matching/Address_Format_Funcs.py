@@ -1,20 +1,19 @@
 import pandas as pd
 import re
-
+import unidecode
 
 long_sub_en={'avenue':'av',
+             'ave': 'av',
 	'boulevard':'blvd',
 	'by-pass':'bypass',
-
 	'circle':'cir',
 	'circuit':'circt',
 	'concession':'conc',
-	'court':'cour',
+	'court':'crt',
 	'crescent':'cres',
 	'corners':'crnrs',
 	'crossing':'cross',
 	'crossroad':'crossrd',
-	'court':'crt',
 	'diversion':'divers',
 	'drive':'dr',	
 	'esplanada':'espl',
@@ -46,7 +45,7 @@ long_sub_en={'avenue':'av',
 	'promenade':'prom',
 	'road':'rd',
 	'range':'rg',
-	'route':'rte',
+	'route':'rt',
 	'rightofway':'rtofwy',
 	'section':'sectn',
 	'sideroad':'siderd',
@@ -75,6 +74,7 @@ dirs_en={'east':'e',
 
 long_sub_fr={'autoroute':'aut',
 	'avenue':'av',
+    'ave': 'av',
 	'boulevard':'boul',
 	'barrage':'brge',
 	'centre':'c',
@@ -91,7 +91,7 @@ long_sub_fr={'autoroute':'aut',
 	'promenade':'prom',
 	'rond-point':'rdpt',
 	'ruelle':'rle',
-	'route':'rte',
+	'route':'rt',
 	'sentier':'sent',
 	'terrasse':'tsse',
 	}
@@ -119,7 +119,14 @@ def AddressClean_en(df,name_in, name_out):
 	df[name_out]=[x.replace('.','') for x in df[name_in].astype('str')]
 	#make all lower case
 	df[name_out]=df[name_out].str.lower()
-
+    # replace double spaces with single
+	df[name_out] = df[name_out].str.replace('  ', ' ')
+    
+    # remove accents
+# 	df[name_out] = unidecode.unidecode(df[name_out])
+    
+    #remove appostrophes
+	df[name_out] = df[name_out].str.replace("'", "")
 
 	#Loop through directions and  shorten as required:
 
@@ -161,6 +168,15 @@ def AddressClean_fr(df, name_in, name_out):
     
     #make all lower case
     df[name_out]=df[name_out].str.lower()
+    
+    # replace double spaces with single
+    df[name_out] = df[name_out].str.replace('  ', ' ')
+    
+    # remove accents
+#     df[name_out] = unidecode.unidecode(df[name_out])
+    
+    #remove appostrophes
+    df[name_out] = df[name_out].str.replace("'", "")
 
     for i,j in dirs.items():
 	

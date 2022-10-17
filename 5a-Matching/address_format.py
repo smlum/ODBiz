@@ -8,11 +8,17 @@
 import pandas as pd
 from Address_Format_Funcs import AddressClean_en, AddressClean_fr
 
-df = pd.read_csv('data/ODBiz_parsed.csv')
+def main():
 
-# apply formatting functions
-# test = df
-df = AddressClean_en(df,'street_name','formatted_en')
-df = AddressClean_fr(df,'street_name','formatted_fr')
+    df = pd.read_csv('data/ODBiz_parsed.csv')
 
-df.to_csv('data/formatted.csv',index=False)
+    # apply formatting functions
+    # test = df
+    df = AddressClean_en(df,'street_name','formatted_en')
+    df = AddressClean_fr(df,'street_name','formatted_fr')
+
+    df.to_csv('data/formatted.csv',index=False)
+    
+if __name__ == "__main__":
+    main()
+

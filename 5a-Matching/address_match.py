@@ -1,12 +1,6 @@
 # This finds address matches between files by looking for exact matches on street number and 'fuzzy' matches on street name
 # the goal is to use Open Addresses files to assign geocoordinates
 
-# I want to start by trying out the script on a sample. 
-# download ODA data for Alberta.
-
-# let's try matching even for those with geocodes
-# then the results can be compared
-
 # conda install thefuzz
 # conda install unidecode
 
@@ -22,6 +16,7 @@ import re
 from AddressFuncs import DirectionCheck, NameIsNumber
 import sys
 
+pd.options.mode.chained_assignment = None  # default='warn'
 
 # input_dir='inputs/'
 # output_dir='outputs/'
@@ -42,15 +37,14 @@ cut_off = 80
 #Read input files
 
 # loop through and do seperately for each province 
-# let's test it on one province again first. AB
 
+# provinces = ['AB', 'BC', 'MB', 'NB', 'NT', 'NS', 'ON', 'PE', 'QC', 'SK']
 
-provinces = ['AB', 'BC', 'MB', 'NB', 'NT', 'NS', 'ON', 'PE', 'QC', 'SK']
-# provinces = ['AB', 'BC', 'MB', 'NB', 'NT', 'NS', 'PE', 'QC', 'SK']
-# provinces = ['SK']
-# provinces = ['AB', 'BC', 'MB', 'QC']
+# Use fewer provinces for testing
+provinces = ['AB', 'BC', 'MB', 'QC']
 
-sample_size_set = 1000000
+# Use a lower sample size for testing
+sample_size_set = 30
 
 # for province_code in provinces:
 #     file_location = "https://www150.statcan.gc.ca/n1/pub/46-26-0001/2021001/ODA_" + province_code + "_v1.zip"
@@ -59,13 +53,40 @@ sample_size_set = 1000000
 # get the correct file for DF
 # save it to a unique file name
 
-# SAM TO ADD 
-# (1) some way to check for the city - there might be lots of main streets.
-# (2) set a higher cutoff for streets with a number in them, probably 90
-# like 17th av (since it matches closely with 16th av)
+# TODO#3
+# set a higher cutoff for streets with a number in them, probably 90. eg 17th av matches closely with 16th av
 
 
 df_all = pd.DataFrame()
+
+
+df = pd.read_csv('data/formatted.csv', low_memory=False)
+og_length = len(df)
+print('Rows:', og_length)
+print('Rows without lat/lon:', len(df[df['longitude'].isnull()]))
+
+# Exclude rows without a parsed street addresses
+df_na = df[df['street_no'].isna() | df['formatted_en'].isna() | df['province'].isna() | df['city'].isna()]
+print('Removed rows without a parsed street address: ', len(df_na))
+
+df = df[df['street_no'].notnull() & df['formatted_en'].notnull() & df['province'].notnull() & df['city'].notnull()]
+
+df = df.sort_values(['latitude'])
+
+# Exclude rows duplicated on their street address
+df_dup = df[df.duplicated(subset=['street_no','formatted_en', 'province', 'city'], keep='first')]
+print('Removed rows which are duplicated on street address:', len(df_dup))
+
+# Keep non-duplicated rows and the first of the duplicated rows
+df = df[~df.duplicated(subset=['street_no','formatted_en', 'province', 'city'], keep='first')]
+print('Rows left to match:', len(df))
+
+print('Actual rows left to match, without lat/lon:', len(df[df['longitude'].isnull()]))
+
+if (og_length - len(df) - len(df_na) - len(df_dup) != 0):
+    print('Length of output dataframe is bigger than inputs - check for error in the deduplication/ filtering script')
+
+df_input = df
 
 for province_code in provinces:
     
@@ -74,13 +95,14 @@ for province_code in provinces:
     print(province_code)
 
     # df=pd.read_csv(input_dir+database)
-    df = pd.read_csv('data/formatted.csv', low_memory=False)
+#     df = pd.read_csv('data/formatted.csv', low_memory=False)
 
     # test 
-    df = df[df['province'] == province_code]
+    df = df_input[df_input['province'] == province_code]
 
     # drop any entries without a street number
-    df = df.dropna(subset=['street_no'])
+#     df = df.dropna(subset=['street_no'])
+
     
     print('rows to match: ', len(df))
 
@@ -88,6 +110,7 @@ for province_code in provinces:
     # DF=pd.read_csv(input_dir+addresses)
     
     ocd_file = "data/oda-addresses/ODA_" + province_code + "_v1_formatted.csv"
+    
 #     if (province_code == 'QC'):
 #         ocd_file = "data/oda-addresses/ODA_" + province_code + "_v1_formatted.csv"
 #     else:
@@ -158,6 +181,7 @@ for province_code in provinces:
     y = [0]*n
     
     csdname_oda = [0]*n
+    keep_match = [0]*n
     provider_oda = [0]*n
     city_pcs_oda = [0]*n
 
@@ -248,6 +272,7 @@ for province_code in provinces:
                     #this is PERPLEXING. We take the mean.
                     x[i]=DF_temp.loc[DF_temp["street"]==best,"longitude"].mean()
                     y[i]=DF_temp.loc[DF_temp["street"]==best,"latitude"].mean()
+                    keep_match[i] = 'yes'
                     
 #                     print(i, ': ', DF_temp.loc[DF_temp["street"]==best,"provider"].values[0])
                     
@@ -258,8 +283,14 @@ for province_code in provinces:
                     else:
                         csdname_oda[i] = ''
             else:
-                    x[i]=''
-                    y[i]=''
+                    # TODO#2 
+                    # before we we did not keep these values
+                    # I changed this to keep lat/lon values even for data we don't keep
+                    # we should add an indicator instead to say 'keep' or 'exclude'
+                    # we can then remove unwanted lat/lons at a later stage
+                    x[i]=DF_temp.loc[DF_temp["street"]==best,"longitude"].mean()
+                    y[i]=DF_temp.loc[DF_temp["street"]==best,"latitude"].mean()
+                    keep_match[i] = 'no'
                     csdname_oda[i] = ''
 #                     csdname_oda[i] = ''
 #                     provider_oda[i] = ''
@@ -276,17 +307,21 @@ for province_code in provinces:
     df["csdname_oda"] = csdname_oda
 #     df["provider_oda"] = provider_oda
 #     df['city_pcs_oda'] = city_pcs_oda
+    df["keep_match"] = keep_match
 
     #create output
     # for testing, we don't need all the columns - just the address, and maybe the name
 #     cols = list(df)
     # df_out = df[[cols[0],'street_no','street_name','matches_r','ratio','x','y']]
     
-    no_matches = df['ratio'][df['ratio'] > cut_off].count()
+#     no_matches = df['ratio'][df['ratio'] > cut_off].count()
+    keep_match_yes = df[df["keep_match"] == 'yes']
+    no_matches = len(keep_match_yes)
     percent_matches = (100 * no_matches / sample_size)
-    print('matches (n = ', sample_size, ', r = ', cut_off, '): ', percent_matches, '%')
+#     print('matches (n = ', sample_size, ', r = ', cut_off, '): ', percent_matches, '%')
+    print('matches (n = ', sample_size, '): ', percent_matches, '%')
     
-    output_filename = 'output-' + province_code + '.csv'
+    output_filename = 'output/output-' + province_code + '.csv'
     df.to_csv(output_filename, index=False)
 
     t2 = time.time()
@@ -295,16 +330,14 @@ for province_code in provinces:
 #     df_all = df_all.append(df)
     df_all = pd.concat([df_all, df])
 
-    
 
-# df_all.to_csv("output_all.csv", index=False)
+df_all = pd.concat([df_all, df_na, df_dup])
 
-# for each province print
-# size of dataframe
-# how many were not geocoded
-# number of oda addresses
-# how many with matches found
-# how long did it take to compute
-    # if ages, then message every batch of 100
-    
-df_all.to_csv("output_all.csv", index=False)
+# TODO#1 add in lat/lons for the duplicated rows we added back in.
+
+print('Number of rows in output dataframe: ', len(df_all))
+
+# use another output filename for testing
+
+df_all.to_csv("output/matched_test.csv", index=False)
+# df_all.to_csv("output/matched.csv", index=False)
