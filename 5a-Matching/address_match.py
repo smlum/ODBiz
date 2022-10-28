@@ -38,13 +38,13 @@ cut_off = 80
 
 # loop through and do seperately for each province 
 
-# provinces = ['AB', 'BC', 'MB', 'NB', 'NT', 'NS', 'ON', 'PE', 'QC', 'SK']
+provinces = ['AB', 'BC', 'MB', 'NB', 'NT', 'NS', 'ON', 'PE', 'QC', 'SK']
 
 # Use fewer provinces for testing
-provinces = ['AB', 'BC', 'MB', 'QC']
+# provinces = ['AB', 'BC', 'MB', 'QC']
 
 # Use a lower sample size for testing
-sample_size_set = 30
+# sample_size_set = 100
 
 # for province_code in provinces:
 #     file_location = "https://www150.statcan.gc.ca/n1/pub/46-26-0001/2021001/ODA_" + province_code + "_v1.zip"
@@ -148,9 +148,9 @@ for province_code in provinces:
     print('ODA addresses:', len(DF))
     
     # FOR TESTING take a sample
-#     sample_size = len(df)
+    sample_size = len(df)
     
-    sample_size = sample_size_set
+#     sample_size = sample_size_set
     if (len(df) > sample_size):
         df = df.sample(sample_size)
     else:
@@ -339,5 +339,5 @@ print('Number of rows in output dataframe: ', len(df_all))
 
 # use another output filename for testing
 
-df_all.to_csv("output/matched_test.csv", index=False)
-# df_all.to_csv("output/matched.csv", index=False)
+# df_all.to_csv("output/matched_test.csv", index=False)
+df_all.to_csv("output/matched.csv", index=False)
