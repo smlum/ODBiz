@@ -6,16 +6,16 @@ In our original ODBiz dataset we have around 400k rows missing lat/lons.
 The following scripts are used for the matching process:
 
 ## oda_download.py 
-Downloads the ODA data files for each province and saves them in data/oda_addresses
+Downloads the ODA data files for each province and saves them in 'data/oda_addresses'
 
 ## oda_formatting.py
-Applies formatting to street name columns in the ODA datasets. Takes in arguments of the files to be formatted and stores all outputs in data/oda_addresses/formatted.
+Applies formatting to street name columns in the ODA datasets. It takes in arguments of the files to be formatted and stores all outputs in 'data/oda_addresses'
 
-## address_formatting.py
-Applies formatting to street names. It takes in files data/oda-addresses/ODA_
+## address_format.py
+Applies formatting to street names in our parsed dataset. 
 
 ## address_match.py
-Takes in our source dataset and ODA datasets to match against. Outputs a csv of matched data for each province and one complete csv for the entire dataset in data/output
+Matches our formatted dataset against the formatted ODA datasets. It outputs a csv of matched data for each province and one complete csv for the entire dataset in data/output.
 
 ## post_process.py
 Adds back in any data that has been removed for geocoding. 
