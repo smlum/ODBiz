@@ -10,7 +10,8 @@ from Address_Format_Funcs import AddressClean_en, AddressClean_fr
 
 def main():
 
-    df = pd.read_csv('data/ODBiz_parsed.csv')
+    df = pd.read_csv('data/ODBiz_parsed.csv', low_memory=False)
+#     df = df.sample(100)
 
     # apply formatting functions
     # test = df

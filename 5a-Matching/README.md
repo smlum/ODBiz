@@ -39,6 +39,8 @@ The formatting functions apply three main processes to the input addresses. Thes
 
 There are two formatting script for English and French respectively, with the French being applied to addresses in Quebec.
 
+Matching function is fuzz.ratio
+
 Dedpuplication
 
 Putting the data back together

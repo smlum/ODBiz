@@ -9,6 +9,7 @@ def main():
         print(province_code)
         ocd_file = "data/oda-addresses/ODA_" + province_code + "_v1.csv"
         df = pd.read_csv(ocd_file, low_memory=False)
+#         df = df.sample(100)
         
         if (province_code == 'QC'):
             # I should change this 
@@ -17,6 +18,7 @@ def main():
             df = AddressClean_en(df,'street','street_formatted')
         output_file_name = "data/oda-addresses/ODA_" + province_code + "_v1_formatted.csv"
         df.to_csv(output_file_name, index=False)
+        print("output: ", output_file_name)
 
 if __name__ == "__main__":
     main()

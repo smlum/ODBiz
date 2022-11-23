@@ -1,6 +1,7 @@
 import pandas as pd
 import re
 import unidecode
+import unicodedata
 
 long_sub_en={'avenue':'av',
              'ave': 'av',
@@ -10,7 +11,8 @@ long_sub_en={'avenue':'av',
 	'circuit':'circt',
 	'concession':'conc',
 	'court':'crt',
-	'crescent':'cres',
+	'crescent':'cr',
+	'cres':'cr',
 	'corners':'crnrs',
 	'crossing':'cross',
 	'crossroad':'crossrd',
@@ -55,7 +57,8 @@ long_sub_en={'avenue':'av',
 	'terrace':'terr',
 	'townline':'tline',
 	'tournabout':'trnabt',
-	'village':'villge'
+	'village':'villge',
+	'-':' '
 	}
 	
 dirs_en={'east':'e',
@@ -80,6 +83,7 @@ long_sub_fr={'autoroute':'aut',
 	'centre':'c',
 	'carré':'car',
 	'cul-de-sac':'cds',
+	'cul de sac':'cds',
 	'chemin':'ch',
 	'carrefour':'carref',
 	'croissant':'crois',
@@ -94,6 +98,7 @@ long_sub_fr={'autoroute':'aut',
 	'route':'rt',
 	'sentier':'sent',
 	'terrasse':'tsse',
+	'-':' '
 	}
 
 
@@ -119,11 +124,18 @@ def AddressClean_en(df,name_in, name_out):
 	df[name_out]=[x.replace('.','') for x in df[name_in].astype('str')]
 	#make all lower case
 	df[name_out]=df[name_out].str.lower()
-    # replace double spaces with single
+    # replace double and triple spaces with single
 	df[name_out] = df[name_out].str.replace('  ', ' ')
+	df[name_out] = df[name_out].str.replace('  ', ' ')
+    
+    # remove hyphen
+	df[name_out] = df[name_out].str.replace('-', ' ')
     
     # remove accents
 # 	df[name_out] = unidecode.unidecode(df[name_out])
+	df[name_out] = df[name_out].str.normalize('NFKD').str.encode('ascii', errors='ignore').str.decode('utf-8')
+# 	df[name_out] = df[name_out].apply(lambda x: print(x.str))
+
     
     #remove appostrophes
 	df[name_out] = df[name_out].str.replace("'", "")
@@ -169,11 +181,16 @@ def AddressClean_fr(df, name_in, name_out):
     #make all lower case
     df[name_out]=df[name_out].str.lower()
     
-    # replace double spaces with single
+    # replace double and triple spaces with single
     df[name_out] = df[name_out].str.replace('  ', ' ')
+    df[name_out] = df[name_out].str.replace('  ', ' ')\
+    
+    # remove hyphen
+    df[name_out] = df[name_out].str.replace('-', ' ')
     
     # remove accents
-#     df[name_out] = unidecode.unidecode(df[name_out])
+# 	df[name_out] = unidecode.unidecode(df[name_out])
+    df[name_out] = df[name_out].str.normalize('NFKD').str.encode('ascii', errors='ignore').str.decode('utf-8')
     
     #remove appostrophes
     df[name_out] = df[name_out].str.replace("'", "")
