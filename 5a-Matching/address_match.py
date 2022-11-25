@@ -14,14 +14,12 @@ import sys
 import unidecode #to remove accents
 import re
 from AddressFuncs import DirectionCheck, NameIsNumber
-import sys
 
 pd.options.mode.chained_assignment = None  # default='warn'
 
 provinces = ['AB', 'BC', 'MB', 'NB', 'NT', 'NS', 'ON', 'PE', 'QC', 'SK']
 # For testing:
-sample_size = 100
-# provinces = ['AB', 'BC', 'MB', 'QC']
+
 
 #Read input files
 df_all = pd.DataFrame()
@@ -53,10 +51,13 @@ if (og_length - len(df) - len(df_na) - len(df_dup) != 0):
 df_input = df
 
 #This is a semi-arbitrary cut off for fuzzy string matching
-# Sam L: we found ~93 to be the best cutoff
-cut_off = 93
+# Sam: we found ~93 to be the best cutoff
+cut_off = 92
 
 for province_code in provinces:
+    
+#     sample_size = 100
+    # provinces = ['AB', 'BC', 'MB', 'QC']
     
     t1 = time.time()
     print(province_code)
@@ -79,11 +80,11 @@ for province_code in provinces:
     df["street_no"] = df["street_no"].astype('int', errors='ignore').astype('str')
     
 #     sample_size = len(df)
-    # FOR TESTING, use a sample
-    if (len(df) > sample_size):
-        df = df.sample(sample_size)
-    else:
-        sample_size = len(df)
+#     FOR TESTING, use a sample
+#     if (len(df) > sample_size):
+#         df = df.sample(sample_size)
+#     else:
+#         sample_size = len(df)
 
 
     num = list(df["street_no"])
@@ -107,11 +108,10 @@ for province_code in provinces:
     y = [0]*n
     csdname_oda = [0]*n
     keep_match = [0]*n
+    no_match_reason = [0]*n
 #     provider_oda = [0]*n
 #     city_pcs_oda = [0]*n
     
-    # for testing record reason for no match
-    match_reason = [0]*n
 
     # loop through main list
     for i in range(n):
@@ -168,53 +168,60 @@ for province_code in provinces:
 
                             else: #not clearly better than second option
                                 RAT_MATCH = False
-                                match_reason[i] = 'second option: ' + (bests[1])[0]
+                                no_match_reason[i] = 'close 2nd: ' + (bests[1])[0]
 
 
-                        else: #Only one option, and score above 70
+                        else: #Only one option, and score above cutoff
                             RAT_MATCH=True
-                    else:
+                    else: # direction or number do not match
                         RAT_MATCH =False
-            else: #Best option ratio <cutoff, not good
+                        no_match_reason[i] = 'dir or no'
+                        
+            else: #Best option ratio < cutoff, not good
                 RAT_MATCH=False
+                no_match_reason[i] = '< cutoff'
 
 
             if RAT_MATCH==True:
                     #some addresses repeat in address lists with slightly different lat/lons
                     #this is PERPLEXING. We take the mean.
-                    x[i]=DF_temp.loc[DF_temp["street"]==best,"longitude"].mean()
-                    y[i]=DF_temp.loc[DF_temp["street"]==best,"latitude"].mean()
+                    x[i]=DF_temp.loc[DF_temp["street_formatted"]==best,"longitude"].mean()
+                    y[i]=DF_temp.loc[DF_temp["street_formatted"]==best,"latitude"].mean()
                     keep_match[i] = 'yes'
-                                        
-                    if not DF_temp.loc[DF_temp["street"]==best,"csdname"].empty:
-                        csdname_oda[i] = DF_temp.loc[DF_temp["street"]==best,"csdname"].values[0]
+                    
+                    # get csd name
+                    if not DF_temp.loc[DF_temp["street_formatted"]==best,"csdname"].empty:
+                        csdname_oda[i] = DF_temp.loc[DF_temp["street_formatted"]==best,"csdname"].values[0]
 #                     provider_oda[i] = DF_temp.loc[DF_temp["street"]==best,"provider"].values[0]
 #                     city_pcs_oda[i] = DF_temp.loc[DF_temp["street"]==best,"city_pcs"].values[0]
                     else:
                         csdname_oda[i] = ''
             else:
-                    x[i]=DF_temp.loc[DF_temp["street"]==best,"longitude"].mean()
-                    y[i]=DF_temp.loc[DF_temp["street"]==best,"latitude"].mean()
+#                     x[i]=DF_temp.loc[DF_temp["street"]==best,"longitude"].mean()
+#                     y[i]=DF_temp.loc[DF_temp["street"]==best,"latitude"].mean()
+                    x[i] = ''
+                    y[i] = ''
                     keep_match[i] = 'no'
                     csdname_oda[i] = ''
                     
     df["matches_r"]=MATCHES_r	
     df["ratio"]=ratio
-
-
     df["x"]=x
     df["y"]=y
-    
     df["csdname_oda"] = csdname_oda
     df["keep_match"] = keep_match
+    df["no_match_reason"] = no_match_reason
+    
 
     # create output
+    sample_size = len(df)
     keep_match_yes = df[df["keep_match"] == 'yes']
     no_matches = len(keep_match_yes)
     percent_matches = (100 * no_matches / sample_size)
     print('matches (n = ', sample_size, '): ', percent_matches, '%')
     
-    output_filename = 'output/sample_output-' + province_code + '.csv'
+    # generate csv for each province
+    output_filename = 'output/output-' + province_code + '.csv'
     df.to_csv(output_filename, index=False)
 
     t2 = time.time()
@@ -228,4 +235,4 @@ df_all = pd.concat([df_all, df_na, df_dup])
 print('Number of rows in output dataframe: ', len(df_all))
 
 # df_all.to_csv("output/matched_test.csv", index=False)
-df_all.to_csv("output/sample_matched_a.csv", index=False)
+df_all.to_csv("output/matched.csv", index=False)
