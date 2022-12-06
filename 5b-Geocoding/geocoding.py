@@ -34,7 +34,7 @@ df = pd.read_csv(input_data, low_memory=False, dtype="str")
 
 # Filter the data
 
-print('Original length: ', len(df))
+print('Input data length: ', len(df))
 
 # filter to those with a street number and street name
 df = df[~df.street_no.isna()]
@@ -75,27 +75,32 @@ provinces = df['province'].unique()
 
 # For testing
 # df = df.sample(100)
-provinces = ['QC']
+# provinces = ['QC']
 
 # ---------------------
 
 
+
+# Set a timer
+t1 = time.time()
 
 # Reset arrays for collecting our results
 JSONS = []
 JSONS_CITIES = []
 JSONS_ALL = []
 
-# Set a timer
-t1 = time.time()
-
 # loop through dataframe by province
-for province in provinces:
+for province in reversed(provinces):
+    
+    # Reset arrays for collecting our results
+    JSONS = []
+    JSONS_CITIES = []
     
     df2 = df[df['province'] == province]
     print(province)
     print('Number to geocode: ', len(df2))
     reqs_gc = list(df2['gc_request_street'])
+    idxs = list(df2['idx'])
 
     # Loop through each request
     for i in range(len(reqs_gc)):
@@ -105,7 +110,7 @@ for province in provinces:
         time.sleep(1) 
         
         # Print a message every 1000 queries
-        if (i % 1000 == 0 and i > 1):
+        if (i % 1000 == 0):
             print(str(i), ' of ', str(len(df2)), ' queries completed')
             t2 = time.time()
             print('seconds elapsed: ', str(round(t2-t1, 2)), '\n')
@@ -128,6 +133,10 @@ for province in provinces:
                 for index in range(len(resp['data'])):
                     if (index > 2):
                         del resp['data'][3]
+                        
+                # Add data id's to json
+                resp['idx'] = idxs[i]
+                
             else:
                 resp = ''
     #             print('no gc street address found')
@@ -135,6 +144,8 @@ for province in provinces:
         except requests.exceptions.ConnectionError:
             print("Connection refused for query: ", query_gc) 
             resp = ''
+        
+
     
         # Append to array of results
         JSONS.append(resp)
@@ -144,10 +155,11 @@ for province in provinces:
     json_name = 'data/geocoded_' + str(province) + '.json'
     with open(json_name, 'w', encoding='utf-8') as f:
         json.dump(JSONS, f, ensure_ascii=False, indent=4)
-#     print("\n")
+    print(province, " DONE")
 
 # create a big json dump at the end
 with open('data/geocoded.json', 'w', encoding='utf-8') as f:
     json.dump(JSONS_ALL, f, ensure_ascii=False, indent=4) 
-    
+
+t2 = time.time()
 print('DONE. Seconds elapsed: ', str(round(t2-t1, 2)))
