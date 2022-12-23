@@ -29,6 +29,12 @@ og_length = len(df)
 print('Rows:', og_length)
 print('Rows without lat/lon:', len(df[df['longitude'].isnull()]))
 
+
+
+# ~~~~~~~~ Pre-processing ~~~~~~~~~
+
+
+
 # Exclude rows without a parsed street addresses
 df_na = df[df['street_no'].isna() | df['formatted_en'].isna() | df['province'].isna() | df['city'].isna()]
 print('Rows without a parsed street address (ignored): ', len(df_na))
@@ -49,6 +55,12 @@ if (og_length - len(df) - len(df_na) - len(df_dup) != 0):
     print('Possible error in filtering/ deduplication: length of output dataframe is bigger than inputs')
 
 df_input = df
+
+
+
+# ~~~~~~~~ Matching ~~~~~~~~~
+
+
 
 #This is a semi-arbitrary cut off for fuzzy string matching
 # Sam: we found ~93 to be the best cutoff
@@ -74,7 +86,7 @@ for province_code in provinces:
     DF = DF.dropna(subset=['street_no'])
     print('ODA addresses to match against:', len(DF))
 
-    #force street numbers to be integers rather than strings (pandas converts to float if there are empty entries)
+    # force street numbers to be integers rather than strings (pandas converts to float if there are empty entries)
     DF["street_no"] = DF["street_no"].astype('int', errors='ignore').astype('str')
     df["street_no"] = pd.to_numeric(df["street_no"], errors='coerce').fillna(0).astype(np.int64)
     df["street_no"] = df["street_no"].astype('int', errors='ignore').astype('str')
