@@ -1,7 +1,9 @@
 ## Geocoding
 
-Geocoding finds lat lon coordinates based on address text data.
+We use the GC NAR API to find latitude and longitude coordinates from parsed street address information.
 
-The number of records we needed to geocode (100s of thousand) go beyond the rate limits for most geocoding services.
+geocoding.py contains the geocoding script. If there are duplicate addresses, only one is sent to the API.
 
-We explored setting up our own geocode API using Pelias. https://github.com/pelias
+post_processing.py is needed to add geocoordinates to duplicate addresses.
+
+The output of this step is in data/output/geocoded.csv
